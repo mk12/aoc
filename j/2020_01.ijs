@@ -4,10 +4,10 @@ NB. Day 1: Report Repair
 
 load 'common.ijs'
 
-xs =: ". ;. _2 (input '2020_01') , LF
+x =: ". ;. _1 LF, input '2020_01'
 
 NB. Part 1
-*/ xs #~ xs e.~ 2020 - xs
+*/ x #~ x e.~ 2020 - x
 
 NB. Part 2
-*/ ~. 0 -.~ , xs #~ xs e.~ xs -/~ 2020 - xs
+*/ ~. 0 -.~ , x #~ x e.~ x -/~ 2020 - x

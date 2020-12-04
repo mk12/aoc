@@ -12,8 +12,7 @@ char =: ; 2 {"1 s
 pwd =: 3 {"1 s
 
 NB. Part 1
-count =: +/"1 (char = ]) &: > pwd
-+/ (] -: /:~)"1 a ,. count ,. b
++/ (] = a >."1 b <."1 ]) +/"1 (char = ]) &: > pwd
 
 NB. Part 2
 va =: char = (<: a) { & > pwd
@@ -40,13 +39,12 @@ NB.
 NB. Sum each row (+/"1) of booleans obtained by unboxing (>) and (&:) testing
 NB. for equality with the character (char = ]).
 NB.
-NB.     count =: +/"1 (char = ]) &: > pwd
+NB.     ... +/"1 (char = ]) &: > pwd
 NB.
-NB. Make a table with three columns (a ,. count ,. b) and take the sum (+/) of
-NB. booleans obtained by testing if each row (]) is identical (-:) to the result
-NB. of sorting (/:~) it.
+NB. Sum (+/) booleans obtained by testing if the those (]) values equal (=) the
+NB. result of clamping them (]) to the minimum (a >."1) and maximum (b <."1).
 NB.
-NB.     +/ (] -: /:~)"1 a ,. count ,. b
+NB.     +/ (] = a >."1 b <."1 ]) ...
 NB.
 NB. Unbox (>) and (&) index ({) passwords by indices from a, decremented (<:) to
 NB. be zero-based. Do the same for b.

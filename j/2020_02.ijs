@@ -8,16 +8,18 @@ load 'regex'
 s =: ('[^-: ]+' rxall ]) ;. _2 LF ,~ input '2020_02'
 a =: ". &> 0 {"1 s  NB. minimum/first index
 b =: ". &> 1 {"1 s  NB. maximum/second index
-char =: ; 2 {"1 s
-pwd =: 3 {"1 s
+char =: ; 2 {"1 s   NB. designated character
+pwd =: 3 {"1 s      NB. password
 
-NB. Part 1
+NB. ===== Part 1 =====
+
 +/ (] = a >."1 b <."1 ]) +/"1 (char = ]) &:> pwd
 
-NB. Part 2
-va =: char = (<: a) { &> pwd
-vb =: char = (<: b) { &> pwd
-+/ va ~: vb
+NB. ===== Part 2 =====
+
++/ ~:/"1 char = (<: a ,. b) { &> pwd
+
+NB. ===== Explanation =====
 
 NB. Append a newline (LF ,~), split lines (;. _2), and get tokens matching the
 NB. regex /[^-: ]+/.
@@ -46,13 +48,13 @@ NB. result of clamping them (]) to the minimum (a >."1) and maximum (b <."1).
 NB.
 NB.     +/ (] = a >."1 b <."1 ]) ...
 NB.
-NB. Unbox (>) and (&) index ({) passwords by indices from a, decremented (<:) to
-NB. be zero-based. Do the same for b.
+NB. Unbox (>) and (&) index ({) passwords (pwd) by indices from a and (,.) b,
+NB. decremented (<:) to be zero-based.
 NB.
-NB.     va =: char = (<: a) { &> pwd
-NB.     vb =: char = (<: b) { &> pwd
+NB.     ... (<: a ,. b) { &> pwd
 NB.
-NB. Take the sum (+/) of va XOR vb (~:).
+NB. Count (+/) rows where equality (=) to the designated character (char) is
+NB. true for exactly one column (~:/"1).
 NB.
-NB.     +/ va ~: vb
+NB.     +/ ~:/"1 char = ...
 NB.

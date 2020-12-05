@@ -10,11 +10,15 @@ trees =: (3 : 0)"1
 +/ '#' = s {~ <"1 ((0 , ({: $ s)) | y + ]) ^: (i. (# s) <.@% {. y) 0 0
 )
 
-NB. Part 1
-trees 1 3
+NB. ===== Part 1 =====
 
-NB. Part 2
-*/ trees > 1 1 ; 1 3 ; 1 5 ; 1 7 ; 2 1
+] t13 =: trees 1 3
+
+NB. ===== Part 2 =====
+
+*/ t13 , trees 4 2 $ 1 1 , 1 5 , 1 7 , 2 1
+
+NB. ===== Explanation =====
 
 NB. Append a newline (LF ,~), split lines (;. _2), and do nothing to them (]).
 NB.
@@ -39,9 +43,13 @@ NB.     +/ '#' = s {~ <"1 ...
 NB.
 NB. Calculate the number of trees encountered with moving down 1, right 3.
 NB.
-NB.     trees 1 3
+NB.     ] t13 =: trees 1 3
 NB.
-NB. Calculate for 5 possible displacements and multiply (*/) the results.
+NB. Calculate the number of trees for the other four displacements and multiply
+NB. (*/) the results along with part 1 (p1).
 NB.
-NB.     */ trees > 1 1 ; 1 3 ; 1 5 ; 1 7 ; 2 1
+NB. Create a table (4 2 $) of the other four displacements, calculate the number
+NB. of trees, and multiply (*/) together with the result from part 1 (t13).
+NB.
+NB.     */ t13 , trees 4 2 $ 1 1 , 1 5 , 1 7 , 2 1
 NB.

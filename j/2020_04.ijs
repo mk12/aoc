@@ -17,8 +17,8 @@ NB. ===== Part 2 =====
 
 min_yrs =: 1920 2010 2020  NB. mininum byr, iyr, eyr
 max_yrs =: 2002 2020 2030  NB. maximum byr, iyr, eyr
-min_hgt =: 150 59  NB. minimum hgt for cm, in
-max_hgt =: 193 76  NB. maximum hgt for cm, in
+min_hgt =: 150 59          NB. minimum hgt for cm, in
+max_hgt =: 193 76          NB. maximum hgt for cm, in
 
 NB. Create an N by 7 table of boxes, where each row has the values for the seven
 NB. keys in the order given by req (or empty if the field is missing).

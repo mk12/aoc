@@ -6,11 +6,15 @@ load 'common.ijs'
 
 s =: ". ;. _2 LF ,~ input '2020_01'
 
-NB. Part 1
+NB. ===== Part 1 =====
+
 */ s #~ s e.~ 2020 - s
 
-NB. Part 2
+NB. ===== Part 2 =====
+
 */ ~. 0 -.~ , s #~ s e.~ s -/~ 2020 - s
+
+NB. ===== Explanation =====
 
 NB. Append a newline (LF ,~) and split lines (;. _2), and parse numbers (".).
 NB.

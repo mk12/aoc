@@ -28,7 +28,7 @@ NB. Start with the origin (0 0) and then iteratively (^:) transform it 0 times
 NB. through N times (i.) where N is the height of the input (# s) divided (%)
 NB. and (@) rounded down (<.) by the vertical displacement ({. y).
 NB.
-NB.     ... ^: (i. (# s) <.@% {. y)
+NB.     ... ^: (i. (# s) <.@% {. y) 0 0
 NB.
 NB. Transformation: translate by the argument (y + ]), take the remainder (|)
 NB. modulo 0 for the vertical coordinate and (,) modulo the width of the input

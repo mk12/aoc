@@ -4,7 +4,7 @@ NB. Day 5: Binary Boarding
 
 load 'common.ijs'
 
-s =: ([: #. 'BR' e.~ ]) ;. _2 LF ,~ input '2020_05'
+s =: ([: #. 'BR' e.~ ]) ;. _2 input '2020_05'
 
 NB. ===== Part 1 =====
 
@@ -17,11 +17,11 @@ s -.~ min2 + i. max - min2
 
 NB. ===== Explanation =====
 
-NB. Append a newline (LF ,~), split lines (;. _2), and convert 'B' and 'R' to 1
-NB. and all other characters to 0 ('BR' e.~ ]). Then, convert the binary lists
-NB. to decimal numbers (#.), giving us the seat IDs.
+NB. Split lines (;. _2), then convert 'B' and 'R' to 1 and all other characters
+NB. to 0 ('BR' e.~ ]). Then, convert the binary lists to decimal numbers (#.),
+NB. giving us the seat IDs.
 NB.
-NB.     s =: ([: #. 'BR' e.~ ]) ;. _2 LF ,~ input '2020_05'
+NB.     s =: ([: #. 'BR' e.~ ]) ;. _2 input '2020_05'
 NB.
 NB. Get the highest (>./) seat ID.
 NB.

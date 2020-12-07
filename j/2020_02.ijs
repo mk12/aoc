@@ -5,9 +5,9 @@ NB. Day 2: Password Philosophy
 load 'common.ijs'
 load 'regex'
 
-s =: '[^-: ]+'&rxall ;. _2 LF ,~ input '2020_02'
-a =: ".&> 0 {"1 s  NB. minimum/first index
-b =: ".&> 1 {"1 s  NB. maximum/second index
+s =: '[^-: ]+' & rxall ;. _2 input '2020_02'
+a =: ".@> 0 {"1 s  NB. minimum/first index
+b =: ".@> 1 {"1 s  NB. maximum/second index
 char =: ; 2 {"1 s  NB. designated character
 pwd =: > 3 {"1 s   NB. password
 
@@ -21,16 +21,15 @@ NB. ===== Part 2 =====
 
 NB. ===== Explanation =====
 
-NB. Append a newline (LF ,~), split lines (;. _2), and get tokens matching the
-NB. regex /[^-: ]+/.
+NB. Split lines (;. _2) and get tokens matching the regex /[^-: ]+/.
 NB.
-NB.     s =: '[^-: ]+'&rxall ;. _2 LF ,~ input '2020_02'
+NB.     s =: '[^-: ]+' & rxall ;. _2 input '2020_02'
 NB.
 NB. Extract the 1st column (0 {"1 s), then unbox (>) and (&) parse numbers (".).
 NB. Do the same for the 2nd column (1 {"1 s).
 NB.
-NB.     a =: ".&> 0 {"1 s
-NB.     b =: ".&> 1 {"1 s
+NB.     a =: ".@> 0 {"1 s
+NB.     b =: ".@> 1 {"1 s
 NB.
 NB. Extract the character column (2 {"1 s), then unbox and flatten (;) it.
 NB. Extract the password column (3 {"1 s), then unbox (>) it.

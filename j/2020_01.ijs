@@ -4,7 +4,7 @@ NB. Day 1: Report Repair
 
 load 'common.ijs'
 
-s =: ". ;. _2 LF ,~ input '2020_01'
+s =: ". ;. _2 input '2020_01'
 
 NB. ===== Part 1 =====
 
@@ -16,9 +16,9 @@ NB. ===== Part 2 =====
 
 NB. ===== Explanation =====
 
-NB. Append a newline (LF ,~) and split lines (;. _2), and parse numbers (".).
+NB. Split lines (;. _2) and parse numbers (".).
 NB.
-NB.     s =: ". ;. _2 LF ,~ input '2020_01'
+NB.     s =: ". ;. _2 input '2020_01'
 NB.
 NB. Test whether differences (2020 - s) exist in the original (s e.~).
 NB.
@@ -29,7 +29,7 @@ NB.
 NB.     */ s #~ ...
 NB.
 NB. For each item in s, make a row containing the result of subtracting it from
-NB. all the items in s.
+NB. all the items in 2020 - s.
 NB.
 NB.     ... s -/~ 2020 - s
 NB.

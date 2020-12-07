@@ -4,7 +4,7 @@ NB. Day 3: Toboggan Trajectory
 
 load 'common.ijs'
 
-s =: ] ;. _2 LF ,~ input '2020_03'
+s =: ] ;. _2 input '2020_03'
 
 trees =: (3 : 0)"1
 +/ '#' = s {~ <"1 ((0 , ({: $ s)) | y + ]) ^: (i. (# s) <.@% {. y) 0 0
@@ -16,13 +16,13 @@ NB. ===== Part 1 =====
 
 NB. ===== Part 2 =====
 
-*/ t13 , trees 4 2 $ 1 1 , 1 5 , 1 7 , 2 1
+*/ t13 , _2 trees\ 1 1 , 1 5 , 1 7 , 2 1
 
 NB. ===== Explanation =====
 
-NB. Append a newline (LF ,~), split lines (;. _2), and do nothing to them (]).
+NB. Split lines (;. _2) and do nothing to them (]).
 NB.
-NB.     s =: ] ;. _2 LF ,~ input '2020_03'
+NB.     s =: ] ;. _2 input '2020_03'
 NB.
 NB. Start with the origin (0 0) and then iteratively (^:) transform it 0 times
 NB. through N times (i.) where N is the height of the input (# s) divided (%)
@@ -48,8 +48,8 @@ NB.
 NB. Calculate the number of trees for the other four displacements and multiply
 NB. (*/) the results along with part 1 (p1).
 NB.
-NB. Create a table (4 2 $) of the other four displacements, calculate the number
-NB. of trees, and multiply (*/) together with the result from part 1 (t13).
+NB. Calculate the number of trees for each (\) pair (_2) in the list of
+NB. displacements and multiply (*/) together with the result from part 1 (t13).
 NB.
-NB.     */ t13 , trees 4 2 $ 1 1 , 1 5 , 1 7 , 2 1
+NB.     */ t13 , _2 trees\ 1 1 , 1 5 , 1 7 , 2 1
 NB.

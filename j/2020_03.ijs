@@ -45,11 +45,8 @@ NB. Calculate the number of trees encountered with moving down 1, right 3.
 NB.
 NB.     ] t13 =: trees 1 3
 NB.
-NB. Calculate the number of trees for the other four displacements and multiply
-NB. (*/) the results along with part 1 (p1).
-NB.
 NB. Calculate the number of trees for each (\) pair (_2) in the list of
-NB. displacements and multiply (*/) together with the result from part 1 (t13).
+NB. displacements and multiply (*/) together with the result from Part 1 (t13).
 NB.
 NB.     */ t13 , _2 trees\ 1 1 , 1 5 , 1 7 , 2 1
 NB.

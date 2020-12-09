@@ -12,7 +12,7 @@ valid =: 4 : '+./ (y ~: -: x) *. y e. x - y'
 NB. ===== Part 1 =====
 
 NB. For each window (\) of 26 numbers, check if the last ({:) is valid with
-NB. respect to the preceding 25 ({:). Then, find the index of the first invalid
+NB. respect to the preceding 25 (}:). Then, find the index of the first invalid
 NB. number (0 i.~) and extract it (s {~).
 ] bad =: s {~ 25 + 0 i.~ 26 ({: valid }:)\ s
 

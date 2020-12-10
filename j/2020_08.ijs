@@ -37,6 +37,7 @@ NB. All non-ACC instructions are flipping candidates. As an optimization, we
 NB. also restrict to the instructions visited during the execution of the
 NB. unmodified program, since any other flip cannot prevent the infinite loop.
 flip =: I. (1 ~: {."1 s) *. > 2 { end
+
 NB. Run the machine with each flip, find the one that halted (program counter
-NB. one past the end), and get its final accumulator value.
+NB. just past the end), and get its final accumulator value.
 ([: > 1 {"1 ] #~ (# s)&=@>@{."1) (step^:_ & init)"0 flip

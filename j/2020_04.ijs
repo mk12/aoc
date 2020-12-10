@@ -5,12 +5,17 @@ NB. Day 4: Passport Processing
 load 'common.ijs'
 load 'regex'
 
+NB. Parse the input into a list of passports. Each passport is a boxed table
+NB. with boxed field keys in the first column and boxed values in the second.
 parse =: [: ([: < ;. _1 ':' , ])@> '\S+' rxall ]
 s =: parse each (LF , LF) splitstring input '2020_04'
+
+NB. Sorted list of required field keys.
 req =: ] ;. _1 ' byr ecl eyr hcl hgt iyr pid'
 
 NB. ===== Part 1 =====
 
+NB. Count passorts that have exactly the required fields, after removing 'cid'.
 +/ (req -: [: /:~ 'cid' -.~ [: > {."1)@> s
 
 NB. ===== Part 2 =====
@@ -42,5 +47,5 @@ NB. column, and the other is zero. Validate ranges and OR together the columns.
 cm_in =: (val * 'cm'&-:"1 unit) ,. (val * 'in'&-:"1 unit)
 hgt =: +./"1 (] = min_hgt >."1 max_hgt <."1 ]) cm_in
 
-NB. Calculate total passports that passed every validation.
+NB. Count passports that passed every validation.
 +/ yrs *. hgt *. ecl *. hcl *. pid

@@ -4,7 +4,7 @@ NB. Day 9: Encoding Error
 
 load 'common.ijs'
 
-NB. Parse the input into a list of numbers.
+NB. Parse the input into a list of XMAS numbers.
 s =: ". ;. _2 input '2020_09'
 
 NB. Returns true if x is the sum of two distinct numbers in y.

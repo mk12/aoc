@@ -4,7 +4,7 @@ NB. Day 2: 1202 Program Alarm
 
 load 'common.ijs'
 
-NB. Parse the input into a list of numbers.
+NB. Parse the input into a list of integer instructions.
 s =: ". ;. _1 ',' , }: input '2019_02'
 
 NB. Given the machine state (program counter and memory contents), runs one

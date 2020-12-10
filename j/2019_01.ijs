@@ -4,7 +4,7 @@ NB. Day 1: The Tyranny of the Rocket Equation
 
 load 'common.ijs'
 
-NB. Parse the input into a list of numbers.
+NB. Parse the input into a list of integer masses.
 s =: ". ;. _2 input '2019_01'
 
 NB. Returns the fuel required for a given mass.

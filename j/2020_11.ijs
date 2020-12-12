@@ -24,4 +24,4 @@ NB. Iterate until equilibrium, and then count the number of occupied seats.
 
 NB. ===== Part 2 =====
 
-
+NB. Too hard.

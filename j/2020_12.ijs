@@ -4,26 +4,35 @@ NB. Day 12: Rain Risk
 
 load 'common.ijs'
 
-NB. Parse the input into a table where each row contains three complex numbers:
-NB. translation (N/S/E/W), forward movement (F), and rotation multiplier (L/R).
-trans =: ] * 1 _1 0j1 0j_1 0 {~ 'EWNS' i. [
-fwd =: ] * 'F' = [
-rotate =: 4 : '*&0j1^:((y % 90) * 1 _1 0 {~ ''LR'' i. x) 1'
-s =: ({. (trans , fwd , rotate) ".@}.) ;. _2 input '2020_12'
+NB. We represent the ship state by two complex numbers: position and direction.
+NB. Accumulation dyads take state on the right, so these accessors use (]).
+pos =: 0 { ]
+dir =: 1 { ]
 
-NB. Appends the given initial position and heading to the reversed parsed input.
-NB. The result is ready for right-to-left reduction via insert (/).
+NB. We represent actions by three complex numbers: translation, advancement, and
+NB. rotation. Each action sets one value and leaves the other two as identities.
+NB. Accumulation dyads take actions on the left, so these accessors use ([).
+translate =: 0 { [
+advance =: 1 { [
+rotate =: 2 { [
+
+NB. Parse each input line into an action (list of three complex numbers).
+ptranslate =: [ * 1 _1 0j1 0j_1 0 {~ 'EWNS' i. ]
+padvance =: [ * 'F' = ]
+protate =: 4 : '*&0j1^:((x % 90) * 1 _1 0 {~ ''LR'' i. y) 1'
+s =: (".@}. (ptranslate , padvance , protate) {.) ;. _2 input '2020_12'
+
+NB. Given an initial state, appends it to the reversed actions, ready for
+NB. right-to-left accumulation via insert (/).
 init =: [: |. s ,~ ]
 
-NB. Returns the Manhattan distance of the given state from the origin.
+NB. Returns the Manhattan distance of the given state to the origin.
 dist =: +/ @: | @ +. @ {.
 
 NB. ===== Part 1 =====
 
-go1 =: 4 : '((0 { y) + (0 { x) + (1 { y) * (1 { x)) , (1 { y) * (2 { x) , 0'
-dist go1/ init 0 1
+dist ((pos + translate + dir * advance) , dir * rotate)/ init 0 1
 
 NB. ===== Part 2 =====
 
-go2 =: 4 : '((0 { y) + (1 { y) * (1 { x)) , (0 { x) + (1 { y) * (2 { x) , 0'
-dist go2/ init 0 10j1
+dist ((pos + dir * advance) , translate + dir * rotate)/ init 0 10j1

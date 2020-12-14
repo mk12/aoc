@@ -58,7 +58,7 @@ run_j() {
             ((fails++))
         fi
         [[ -n "$result" ]] || result=$(tr '\n' ' ' < "$out")
-        printf "%s: %20s ... %4s (%s)\n" "$num" "$result" "$msg" "$elapsed"
+        printf "%s: %21s ... %4s (%s)\n" "$num" "$result" "$msg" "$elapsed"
     done < <(find . -type f \( "${find_args[@]}" \) | sort)
 }
 

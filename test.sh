@@ -2,22 +2,75 @@
 
 set -eufo pipefail
 
-lang=all
+# Options
+debug=false
+
+# Globals
+num=
+lang=
+src=
+in=
+out=
 passes=0
 fails=0
-out=
 
 usage() {
     cat <<EOS
-usage: $0 [-h] [-l LANGUAGE] PATTERN ...
+usage: $0 [-hd] PATTERN ...
 
-Tests Advent of Code solutions. Matches test numbers in the format YYYY_DD
-each PATTERN. Runs all if no patterns are provided.
+Tests Advent of Code solutions. Runs files under src/ that match every PATTERN.
+Runs all if no patterns are provided.
 
 Options
-    -h  show this help message
-    -l  test only this language (defaults to all languages)
+    -h, --help   show this help message
+    -d, --debug  debug mode and/or drop into a REPL
 EOS
+}
+
+main() {
+    find_args=(
+        -E src -mindepth 2 -maxdepth 2 -type f
+        -iregex ".*[0-9]{4}_[0-9]{2}\.[.a-z]+"
+    )
+    for arg in "$@"; do
+        case $arg in
+            -h|--help) usage; exit 0 ;;
+            -d|--debug) debug=true; continue ;;
+            -*) usage; exit 1 ;;
+        esac
+        if ! grep -Eq '[a-zA-Z0-9_]+' <<< "$arg"; then
+            die "$arg: invalid pattern"
+        fi
+        find_args+=("-iregex" ".*$arg.*")
+    done
+
+    cd "$(dirname "$0")"
+    out=$(mktemp)
+    trap 'rm -f "$out"' EXIT
+
+    while read -r src; do
+        num=$(basename "${src%%.*}")
+        lang=$(basename "$(dirname "$src")")
+        in="input/$num.in"
+        if [[ $debug == true ]]; then
+            echo "$0: debugging $src" >&2
+            once_per_lang && try "debug_build_$lang" "build_$lang" :
+            try "debug_run_$lang" "run_$lang"
+            return
+        fi
+        once_per_lang && try "build_$lang" :
+        do_test
+    done < <(find "${find_args[@]}" | sort)
+
+    if [[ $fails -gt 0 ]]; then
+        printf "FAIL. %d passed; %d failed\n" "$passes" "$fails"
+        return 1
+    fi
+    if [[ $passes -eq 0 ]]; then
+        echo "no tests matched the pattern(s): $*"
+        return 1
+    fi
+    printf "ok. %d passed; %d failed\n" "$passes" "$fails"
 }
 
 die() {
@@ -25,69 +78,58 @@ die() {
     exit 1
 }
 
-run_all() {
-    run_j "$@"
+do_test() {
+    status=0
+    elapsed=$({ time "run_$lang" > "$out"; } 2>&1 | awk '/real/ {print $2}') \
+        || status=$?
+    result=
+    if [[ $status -ne 0 ]]; then
+        result="(error)"
+        msg=FAIL
+        ((fails++))
+    elif cmp -s "$out" "output/$num.out"; then
+        msg=ok
+        ((passes++))
+    else
+        msg=FAIL
+        ((fails++))
+    fi
+    [[ -z "$result" ]] && result=$(tr '\n' ' ' < "$out")
+    printf "%s: %21s ... %4s (%s)\n" "$src" "$result" "$msg" "$elapsed"
+}
+
+once_per_lang() {
+    var="${lang}_once"
+    [[ -z "${!var-}" ]]
+}
+
+try() {
+    for f in "$@"; do
+        case $(type -t "$f") in
+            function|builtin) "$f"; return ;;
+        esac
+    done
+    die "no function defined: $*"
 }
 
 run_j() {
-    cd j
-    find_args=()
-    if [[ $# -eq 0 ]]; then
-        find_args+=("-name" "*_*.ijs")
-    fi
-    for pattern in "$@"; do
-        if [[ ${#find_args} -ne 0 ]]; then
-            find_args+=("-o")
-        fi
-        find_args+=("-name" "*$pattern*.ijs")
-    done
-    while read -r file; do
-        num=$(basename "$file")
-        elapsed=$({ time jcon < "$file" > "$out"; } 2>&1 \
-            | grep real | awk '{print $2;}')
-        result=
-        if grep -q '^|.*error$' "$out"; then
-            result="(error)"
-            msg=FAIL
-            ((fails++))
-        elif cmp -s "$out" "../output/${num%.ijs}.out"; then
-            msg=ok
-            ((passes++))
-        else
-            msg=FAIL
-            ((fails++))
-        fi
-        [[ -n "$result" ]] || result=$(tr '\n' ' ' < "$out")
-        printf "%s: %21s ... %4s (%s)\n" "$num" "$result" "$msg" "$elapsed"
-    done < <(find . -type f \( "${find_args[@]}" \) | sort)
+    jcon -jprofile src/j/profile.ijs "$src" "$in" < /dev/null
 }
 
-while getopts "hl:" opt; do
-    case $opt in
-        h) usage; exit 0 ;;
-        l) lang=$OPTARG ;;
-        *) exit 1 ;;
-    esac
-done
-shift $((OPTIND - 1))
+debug_run_j() {
+    jcon -jprofile src/j/profile.ijs "$src" "$in" < /dev/tty
+}
 
-cd "$(dirname "$0")"
-out=$(mktemp)
-trap 'rm -f "$out"' EXIT
+build_zig() {
+    zig build -Drelease-fast
+}
 
-case $lang in
-    all) run_all "$@" ;;
-    j) run_j "$@" ;;
-    *) die "$lang: invalid language"
-esac
+debug_build_zig() {
+    zig build
+}
 
-if [[ $fails -gt 0 ]]; then
-    printf "FAIL. %d passed; %d failed\n" "$passes" "$fails"
-    exit 1
-fi
-if [[ $passes -eq 0 ]]; then
-    echo "no tests matched the pattern(s): $*"
-    exit 1
-fi
+run_zig() {
+    ./zig-out/bin/aoc "$num" "$in"
+}
 
-printf "ok. %d passed; %d failed\n" "$passes" "$fails"
+main "$@"

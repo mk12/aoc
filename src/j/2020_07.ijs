@@ -2,10 +2,9 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 7: Handy Haversacks
 
-load 'common.ijs'
 load 'regex'
 
-s =: input '2020_07'
+s =: read ''
 gold =: < 'shiny gold'
 
 NB. List of all bag colors, starting with an empty box to make index 0 invalid.
@@ -24,7 +23,7 @@ bfs =: 3 : 'y +. +./"1 (I. y) e."_ 1 graph'
 
 NB. Iterate BFS until it converges (^:_). Count (+/) the nodes and then
 NB. decrement (<:) to avoid counting the shiny gold bag itself.
-<: +/ bfs^:_ color = gold
+print <: +/ bfs^:_ color = gold
 
 NB. ===== Part 2 =====
 
@@ -33,4 +32,4 @@ NB. represents the number of recursively contained bags, including itself.
 within =: (count {~ ]) (4 : '>: +/ x * within^:(* # y) y')&(-.&0)"1 graph {~ ]
 
 NB. Count bags and decrement (<:) to avoid counting the shiny gold bag itself.
-<: within color i. gold
+print <: within color i. gold

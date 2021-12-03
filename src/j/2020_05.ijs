@@ -2,18 +2,16 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 5: Binary Boarding
 
-load 'common.ijs'
-
-s =: ([: #. 'BR' e.~ ]) ;. _2 input '2020_05'
+s =: ([: #. 'BR' e.~ ]) ;. _2 read ''
 
 NB. ===== Part 1 =====
 
-] max =: >./ s
+print ] max =: >./ s
 
 NB. ===== Part 2 =====
 
 min2 =: >: <./ s
-s -.~ min2 + i. max - min2
+print s -.~ min2 + i. max - min2
 
 NB. ===== Explanation =====
 
@@ -21,7 +19,7 @@ NB. Split lines (;. _2), then convert 'B' and 'R' to 1 and all other characters
 NB. to 0 ('BR' e.~ ]). Then, convert the binary lists to decimal numbers (#.),
 NB. giving us the seat IDs.
 NB.
-NB.     s =: ([: #. 'BR' e.~ ]) ;. _2 input '2020_05'
+NB.     s =: ([: #. 'BR' e.~ ]) ;. _2 read ''
 NB.
 NB. Get the highest (>./) seat ID.
 NB.

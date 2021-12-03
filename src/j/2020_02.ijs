@@ -2,10 +2,9 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 2: Password Philosophy
 
-load 'common.ijs'
 load 'regex'
 
-s =: '[^-: ]+' & rxall ;. _2 input '2020_02'
+s =: '[^-: ]+' & rxall ;. _2 read ''
 a =: ".@> 0 {"1 s  NB. minimum/first index
 b =: ".@> 1 {"1 s  NB. maximum/second index
 char =: ; 2 {"1 s  NB. designated character
@@ -13,17 +12,17 @@ pwd =: > 3 {"1 s   NB. password
 
 NB. ===== Part 1 =====
 
-+/ (] = a >."1 b <."1 ]) +/"1 char = pwd
+print +/ (] = a >."1 b <."1 ]) +/"1 char = pwd
 
 NB. ===== Part 2 =====
 
-+/ ~:/"1 char = (<: a ,. b) {"1 pwd
+print +/ ~:/"1 char = (<: a ,. b) {"1 pwd
 
 NB. ===== Explanation =====
 
 NB. Split lines (;. _2) and get tokens matching the regex /[^-: ]+/.
 NB.
-NB.     s =: '[^-: ]+' & rxall ;. _2 input '2020_02'
+NB.     s =: '[^-: ]+' & rxall ;. _2 read ''
 NB.
 NB. Extract the 1st column (0 {"1 s), then unbox (>) and (&) parse numbers (".).
 NB. Do the same for the 2nd column (1 {"1 s).

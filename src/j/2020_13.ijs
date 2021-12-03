@@ -2,11 +2,9 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 13: Shuttle Search
 
-load 'common.ijs'
-
 NB. Parse the first line as an integer (min). From the second line (sched),
 NB. collect the bus IDs (bus) and their positions in the list (offset).
-s =: < ;. _2 input '2020_13'
+s =: < ;. _2 read ''
 min =: ".@> {. s
 sched =: ([: 0&". ;. _1 ',' , ])@> {: s
 bus =: sched -. 0
@@ -17,7 +15,7 @@ NB. ===== Part 1 =====
 NB. Get the gap from min to the next multiple of each bus ID (bus | - min).
 NB. (Note that (bus | min) would give the distance to the _previous_ multiple.)
 NB. Then, multiply (*/) the smallest gap (<./) with its corresponding bus ID.
-*/ (<./ , bus {~ (i. <./)) bus | - min
+print */ (<./ , bus {~ (i. <./)) bus | - min
 
 NB. ===== Part 2 =====
 
@@ -54,4 +52,4 @@ NB. descending modulus order (\:~), and then adjoin a list of cumulative modulus
 NB. products (*/\), shifted right by one (_1&|.), and transpose (|:) so that
 NB. each row has the three numbers. Finally, we split into two boxes: the first
 NB. remainder ({.@{.) and the rest of the equations (}.).
-> {. try^:_ ({.@{. ; }.) |: (, (_1&|.)@(*/\)@{:) bus \:~"1 bus (| ,: [) - offset
+print > {. try^:_ ({.@{. ; }.) |: (, (_1&|.)@(*/\)@{:) bus \:~"1 bus (| ,: [) - offset

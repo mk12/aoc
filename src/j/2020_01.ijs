@@ -2,23 +2,21 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 1: Report Repair
 
-load 'common.ijs'
-
-s =: ". ;. _2 input '2020_01'
+s =: ". ;. _2 read ''
 
 NB. ===== Part 1 =====
 
-*/ s #~ s e.~ 2020 - s
+print */ s #~ s e.~ 2020 - s
 
 NB. ===== Part 2 =====
 
-*/ ~. 0 -.~ , s #~ s e.~ s -/~ 2020 - s
+print */ ~. 0 -.~ , s #~ s e.~ s -/~ 2020 - s
 
 NB. ===== Explanation =====
 
 NB. Split lines (;. _2) and parse numbers (".).
 NB.
-NB.     s =: ". ;. _2 input '2020_01'
+NB.     s =: ". ;. _2 read ''
 NB.
 NB. Test whether differences (2020 - s) exist in the original (s e.~).
 NB.

@@ -2,17 +2,15 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 10: Adapter Array
 
-load 'common.ijs'
-
 NB. Parse the input into a list of integer joltages.
-s =: ". ;. _2 input '2020_10'
+s =: ". ;. _2 read ''
 
 NB. ===== Part 1 =====
 
 NB. Sort (/:~) the joltages, add zero (0 ,) for the charging outlet, calculate
 NB. the difference (-~) of each (\) pair (2), add three (3 ,) for the device's
 NB. built-in adapter, count (#) each partition (/.~), and multiply (*/).
-*/ #/.~ delta =: 3 , 2 -~/\ 0 , /:~ s
+print */ #/.~ delta =: 3 , 2 -~/\ 0 , /:~ s
 
 NB. ===== Part 2 =====
 
@@ -34,4 +32,4 @@ choices =: 3 : '1 >. (2 ^ y) - -: (y - 2) * <: y' @ <:
 NB. Split delta around 3s, yielding runs of 1s. Get their lengths, calculate the
 NB. number (#) of resulting choices, multiply (*/), and round down (<.) to avoid
 NB. printing in scientific notation.
-<. */ choices @ # ;. _1 delta
+print <. */ choices @ # ;. _1 delta

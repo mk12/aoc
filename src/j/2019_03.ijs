@@ -2,12 +2,10 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2019
 NB. Day 3: Crossed Wires
 
-load 'common.ijs'
-
 NB. Parse the input into a list of boxed wires. Each wire is a table with three
 NB. columns: 
 parse =: (-/"1 @: =&('DU' ,: 'RL'))@{. * ".@}.
-s =: <@([: parse ;. _1 ',' , ]) ;. _2 input '2019_03'
+s =: <@([: parse ;. _1 ',' , ]) ;. _2 read ''
 
 NB. ===== Part 1 =====
 

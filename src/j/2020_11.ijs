@@ -2,10 +2,8 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 11: Seating System
 
-load 'common.ijs'
-
 NB. Parse the input into a matrix of 0s (floor) and 1s (empty seat).
-s =: =&'L' ;. _2 input '2020_11'
+s =: =&'L' ;. _2 read ''
 
 NB. ===== Part 1 =====
 
@@ -20,7 +18,7 @@ NB. Computes the next generation of seating.
 next =: (3 3 rule@,;. _3 ]) @ pad
 
 NB. Iterate until equilibrium, and then count the number of occupied seats.
-+/ +/ 2 = next^:_ s
+print +/ +/ 2 = next^:_ s
 
 NB. ===== Part 2 =====
 

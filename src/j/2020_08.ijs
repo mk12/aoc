@@ -2,12 +2,10 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 8: Handheld Halting
 
-load 'common.ijs'
-
 NB. Parse the input into a table where each row contains the opcode (0 for NOP,
 NB. 1 for ACC, 2 for JMP) and the signed integer operand.
 ops =: 3 3 $ 'nop' , 'acc' , 'jmp'
-s =: ((ops i. 3 {. ]) , [: ". 4 }. ]) ;. _2 input '2020_08'
+s =: ((ops i. 3 {. ]) , [: ". 4 }. ]) ;. _2 read ''
 
 NB. Given the flip index (x) and the machine state (y), runs one instruction and
 NB. returns an updated machine state. The state consists of the program counter,
@@ -29,7 +27,7 @@ init =: 0 ; 0 ; (# s) $ 0
 NB. ===== Part 1 =====
 
 NB. Run until reaching an already-visited instruction, then get the accumulator.
-> 1 { end =: _1 step^:_ init
+print > 1 { end =: _1 step^:_ init
 
 NB. ===== Part 2 =====
 
@@ -40,4 +38,4 @@ flip =: I. (1 ~: {."1 s) *. > 2 { end
 
 NB. Run the machine with each flip, find the one that halted (program counter
 NB. just past the end), and get its final accumulator value.
-([: > 1 {"1 ] #~ (# s)&=@>@{."1) (step^:_ & init)"0 flip
+print ([: > 1 {"1 ] #~ (# s)&=@>@{."1) (step^:_ & init)"0 flip

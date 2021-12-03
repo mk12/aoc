@@ -2,9 +2,7 @@ NB. Copyright 2020 Mitchell Kember. Subject to the MIT License.
 NB. Advent of Code 2020
 NB. Day 3: Toboggan Trajectory
 
-load 'common.ijs'
-
-s =: ] ;. _2 input '2020_03'
+s =: ] ;. _2 read ''
 
 trees =: (3 : 0)"1
 +/ '#' = s {~ <"1 ((0 , ({: $ s)) | y + ]) ^: (i. (# s) <.@% {. y) 0 0
@@ -12,17 +10,17 @@ trees =: (3 : 0)"1
 
 NB. ===== Part 1 =====
 
-] t13 =: trees 1 3
+print ] t13 =: trees 1 3
 
 NB. ===== Part 2 =====
 
-*/ t13 , _2 trees\ 1 1 , 1 5 , 1 7 , 2 1
+print */ t13 , _2 trees\ 1 1 , 1 5 , 1 7 , 2 1
 
 NB. ===== Explanation =====
 
 NB. Split lines (;. _2) and do nothing to them (]).
 NB.
-NB.     s =: ] ;. _2 input '2020_03'
+NB.     s =: ] ;. _2 read ''
 NB.
 NB. Start with the origin (0 0) and then iteratively (^:) transform it 0 times
 NB. through N times (i.) where N is the height of the input (# s) divided (%)

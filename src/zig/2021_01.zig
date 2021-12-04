@@ -4,7 +4,7 @@ const std = @import("std");
 
 const Depth = u16;
 
-pub fn run(allocator: *std.mem.Allocator, input: anytype, output: anytype) !void {
+pub fn run(allocator: *std.mem.Allocator, input: anytype, output: anytype) anyerror!void {
     var list = std.ArrayList(Depth).init(allocator);
     defer list.deinit();
     var buf: [1024]u8 = undefined;

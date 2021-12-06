@@ -1,4 +1,6 @@
 // Copyright 2021 Mitchell Kember. Subject to the MIT License.
+// Advent of Code 2021
+// Day 1: Sonar Sweep
 
 const std = @import("std");
 const fmt = std.fmt;
@@ -15,20 +17,20 @@ pub fn run(input: anytype, output: anytype) !void {
         part2.addMeasurement(depth);
     }
     // Part 1:
-    try fmt.format(output, "{}\n", .{part1.numIncreases});
+    try fmt.format(output, "{}\n", .{part1.num_increases});
     // Part 2:
-    try fmt.format(output, "{}\n", .{part2.numIncreases});
+    try fmt.format(output, "{}\n", .{part2.num_increases});
 }
 
-fn Counter(comptime windowSize: u64) type {
+fn Counter(comptime window_size: u64) type {
     return struct {
         const Self = @This();
 
         i: usize = 0,
         full: bool = false,
-        buf: [windowSize]Depth = undefined,
+        buf: [window_size]Depth = undefined,
         sum: Depth = 0,
-        numIncreases: u64 = 0,
+        num_increases: u64 = 0,
 
         fn init() Self {
             return .{};
@@ -38,7 +40,7 @@ fn Counter(comptime windowSize: u64) type {
             if (!self.full) {
                 self.sum += depth;
                 self.buf[self.i] = depth;
-                self.i = (self.i + 1) % windowSize;
+                self.i = (self.i + 1) % window_size;
                 self.full = self.i == 0;
                 return;
             }
@@ -46,9 +48,9 @@ fn Counter(comptime windowSize: u64) type {
             self.sum -= self.buf[self.i];
             self.sum += depth;
             self.buf[self.i] = depth;
-            self.i = (self.i + 1) % windowSize;
+            self.i = (self.i + 1) % window_size;
             if (self.sum > prev) {
-                self.numIncreases += 1;
+                self.num_increases += 1;
             }
         }
     };

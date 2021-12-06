@@ -112,6 +112,10 @@ try() {
     die "no function defined: $*"
 }
 
+build_j() {
+    command -v jcon &> /dev/null || die "j not installed"
+}
+
 run_j() {
     jcon -jprofile src/j/profile.ijs "$src" "$in" < /dev/null
 }

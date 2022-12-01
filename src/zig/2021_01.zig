@@ -4,11 +4,13 @@
 
 const std = @import("std");
 const fmt = std.fmt;
+const mem = std.mem;
 
 const Depth = u16;
 
-pub fn run(input: anytype, output: anytype) !void {
-    var buf: [1024]u8 = undefined;
+pub fn run(allocator: mem.Allocator, input: anytype, output: anytype) !void {
+    _ = allocator;
+    var buf: [8]u8 = undefined;
     var part1 = Counter(1).init();
     var part2 = Counter(3).init();
     while (try input.readUntilDelimiterOrEof(&buf, '\n')) |line| {

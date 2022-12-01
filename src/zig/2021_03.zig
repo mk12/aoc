@@ -12,10 +12,12 @@ const Number = u12;
 // The test input has 1000 lines. We can count up to that in `u16`.
 const Count = u16;
 
+// Binary max heap where a left branch indicates a 0 bit, a right branch
+// indicates a 1 bit, and the node values count numbers with that prefix.
+var heap = [_]Count{0} ** (2 << @bitSizeOf(Number));
+
 pub fn run(input: anytype, output: anytype) !void {
-    // Build a binary max heap where a left branch indicates a 0 bit, a right
-    // branch indicates a 1 bit, and node values count numbers with that prefix.
-    var heap = [_]Count{0} ** (2 << @bitSizeOf(Number));
+    // Read input and build the heap.
     var i: usize = 0;
     while (true) {
         const byte = input.readByte() catch |err| switch (err) {

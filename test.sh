@@ -30,7 +30,7 @@ EOS
 main() {
     find_args=(
         -E src -mindepth 2 -maxdepth 2 -type f
-        -iregex ".*[0-9]{4}_[0-9]{2}\.[.a-z]+"
+        -iregex ".*[0-9]{4}[_D][0-9]{2}\.[.a-z]+"
     )
     for arg in "$@"; do
         case $arg in
@@ -38,7 +38,7 @@ main() {
             -d|--debug) debug=true; continue ;;
             -*) usage; exit 1 ;;
         esac
-        if ! grep -Eq '[a-zA-Z0-9_]+' <<< "$arg"; then
+        if ! grep -Eq '^[a-zA-Z0-9_]+$' <<< "$arg"; then
             die "$arg: invalid pattern"
         fi
         find_args+=("-iregex" ".*$arg.*")
@@ -50,6 +50,8 @@ main() {
 
     while read -r src; do
         num=$(basename "${src%%.*}")
+        num=${num#Y}
+        num=${num/D/_}
         lang=$(basename "$(dirname "$src")")
         in="input/$num.in"
         if [[ $debug == true ]]; then
@@ -125,7 +127,7 @@ debug_run_j() {
 }
 
 build_zig() {
-    zig build -Drelease-fast
+    zig build -Drelease
 }
 
 debug_build_zig() {
@@ -133,7 +135,25 @@ debug_build_zig() {
 }
 
 run_zig() {
-    ./zig-out/bin/aoc "$num" "$in"
+    zig-out/bin/aoc "$num" "$in"
+}
+
+build_roc() {
+    if [[ -x bin/roc-aoc ]]; then
+        dst=$(stat -f "%m" bin/roc-aoc)
+        src=$(find src/roc -type f -name "*.roc" -print0 \
+            | xargs -0 stat -f "%m" | sort -nr | head -n1)
+        if [[ "$dst" -ge "$src" ]]; then
+            return
+        fi
+    fi
+    roc build --optimize src/roc/main.roc
+    mkdir -p bin
+    mv src/roc/roc-aoc bin
+}
+
+run_roc() {
+    bin/roc-aoc "$num" "$in"
 }
 
 main "$@"

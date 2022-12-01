@@ -6,12 +6,18 @@ solve : Str -> Result (List U64) _
 solve = \inputStr ->
     input <- parse inputStr |> Result.try
     sums = List.map input List.sum
-    sorted = List.sortDesc sums
+    (State m1 m2 m3) =
+        List.walk sums (State 0 0 0) \State x1 x2 x3, sum ->
+            if sum > x1 then
+                State sum x1 x2
+            else if sum > x2 then
+                State x1 sum x2
+            else if sum > x3 then
+                State x1 x2 sum
+            else
+                State x1 x2 x3
 
-    top1 <- List.first sorted |> onErr "input was empty" |> Result.try
-    top3 = List.takeFirst sorted 3 |> List.sum
-
-    Ok [top1, top3]
+    Ok [m1, m1 + m2 + m3]
 
 parse : Str -> Result (List (List U64)) _
 parse = \str ->

@@ -9,6 +9,7 @@ app "roc-aoc"
         pf.Stdout,
         pf.Task.{ Task },
         Y2022D01,
+        Y2022D02,
     ]
     provides [main] to pf
 
@@ -81,4 +82,5 @@ nameToSolver : Str -> Task (Str -> Result Answers _) _
 nameToSolver = \name ->
     when name is
         "2022_01" -> Y2022D01.solve |> Task.succeed
+        "2022_02" -> Y2022D02.solve |> Task.succeed
         _ -> SolverNotFound name |> Task.fail

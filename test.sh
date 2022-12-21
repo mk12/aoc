@@ -51,8 +51,13 @@ main() {
 
     while read -r src; do
         num=$(basename "${src%%.*}")
+        # Handle Roc naming.
         num=${num#Y}
         num=${num/D/_}
+        # Handle Koka naming.
+        num=${num#y}
+        num=${num/d/}
+        num=${num/-/_}
         lang=$(basename "$(dirname "$src")")
         in="input/$num.in"
         if [[ $debug == true ]]; then
@@ -171,6 +176,32 @@ debug_build_chez() {
 
 debug_run_chez() {
     chez --debug-on-exception --program "$src" "$in"
+}
+
+build_koka() {
+    if [[ -x bin/koka-aoc ]]; then
+        dst=$(stat -f "%m" bin/koka-aoc)
+        src=$(find src/koka -type f -name "*.kk" -print0 \
+            | xargs -0 stat -f "%m" | sort -nr | head -n1)
+        if [[ "$dst" -ge "$src" ]]; then
+            return
+        fi
+    fi
+    mkdir -p bin
+    koka -o bin/koka-aoc -O3 src/koka/main.kk
+    chmod +x bin/koka-aoc
+}
+
+run_koka() {
+    bin/koka-aoc "$num" "$in"
+}
+
+debug_build_koka() {
+    :
+}
+
+debug_run_koka() {
+    koka -e -v0 src/koka/main.kk -- "$num" "$in"
 }
 
 main "$@"

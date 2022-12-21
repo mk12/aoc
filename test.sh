@@ -30,7 +30,8 @@ EOS
 main() {
     find_args=(
         -E src -mindepth 2 -maxdepth 2 -type f
-        -iregex ".*[0-9]{4}[_D][0-9]{2}\.[.a-z]+"
+        -iregex ".*[0-9]{4}[-_][dD]?[0-9]{2}\.[.a-z]+"
+        -not -name "*.so"
     )
     for arg in "$@"; do
         case $arg in
@@ -154,6 +155,22 @@ build_roc() {
 
 run_roc() {
     bin/roc-aoc "$num" "$in"
+}
+
+build_chez() {
+    echo "(compile-program \"$src\")" | chez -q --compile-imported-libraries --optimize-level 3
+}
+
+run_chez() {
+    chez --program "${src%.ss}.so" "$in"
+}
+
+debug_build_chez() {
+    :
+}
+
+debug_run_chez() {
+    chez --debug-on-exception --program "$src" "$in"
 }
 
 main "$@"

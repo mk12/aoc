@@ -19,3 +19,9 @@ ns ← ⟨4, 4, 1, 1, 3, 4, 1, 6, 1, 2⟩
 » 1 ≠ ns
 +` »⊸> 1 ≠ ns
 1⊸=_cut ns
+
+# Trying to get the index of first one and use that was not worth it.
+# Just use / and take the first element after that.
+x ← ⊑¨(∊/⊣)˝¨ 2‿∘⊸⥊¨ Lines "2022_03"
+x ← (⊑(∊/⊣)˝)¨ 2‿∘⊸⥊¨ Lines "2022_03"
+x ← (⊣⊑˜(⊑·⊐⟜1∊))˝¨ 2‿∘⊸⥊¨ Lines "2022_03"

@@ -16,7 +16,7 @@ Split ⇐ (⊢-˜+`×¬)⊸⊔
 Cut ⇐ (⊢-˜¬×·+`»⊸<)⊸⊔
 
 # Parses a string as a nonnegative integer.
-N ⇐ (10⊸×⊸+˜´∘⌽ -⟜'0')⚇1
+N ⇐ 10⊸×⊸+˜´∘⌽ -⟜'0'
 
 # Whitespace characters used in problem inputs.
 ws ⇐ @+10‿32

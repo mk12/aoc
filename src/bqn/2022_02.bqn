@@ -2,9 +2,9 @@
 # Advent of Code 2022
 # Day 2: Rock Paper Scissors
 
-⟨Cut, Input, ws⟩ ← •Import "common.bqn"
+⟨Lines⟩ ← •Import "common.bqn"
 
-x ← ⌽"AX"-˜⍉∘‿2⥊∾ ∊⟜ws⊸Cut Input "2022_02"
+x ← "XA"-˜⍉>2‿0⊸⊏¨ Lines "2022_02"
 
 # Part 1
 •Out +´(1+⊏ + 3×3|1+-˝)x

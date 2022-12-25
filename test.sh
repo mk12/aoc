@@ -62,8 +62,8 @@ main() {
         in="input/$num.in"
         if [[ $debug == true ]]; then
             echo "$0: debugging $src" >&2
-            once_per_lang && try "debug_build_$lang" "build_$lang" :
-            try "debug_run_$lang" "run_$lang"
+            once_per_lang && try "debug_build_$lang" "build_$lang" : < /dev/tty
+            try "debug_run_$lang" "run_$lang" < /dev/tty
             return
         fi
         once_per_lang && try "build_$lang" :
@@ -129,7 +129,7 @@ run_j() {
 }
 
 debug_run_j() {
-    jcon -jprofile src/j/profile.ijs "$src" "$in" < /dev/tty
+    jcon -jprofile src/j/profile.ijs "$src" "$in"
 }
 
 build_zig() {
@@ -202,6 +202,19 @@ debug_build_koka() {
 
 debug_run_koka() {
     koka -e -v0 src/koka/main.kk -- "$num" "$in"
+}
+
+build_bqn() {
+    command -v bqn &> /dev/null || die "bqn not installed"
+}
+
+run_bqn() {
+    bqn "$src"
+}
+
+debug_run_bqn() {
+    cd src/bqn
+    bqn -e "$(< "${src##*/}")" -r
 }
 
 main "$@"

@@ -2,9 +2,9 @@
 # Advent of Code 2022
 # Day 1: Calorie Counting
 
-⟨Lines, N, _split⟩ ← •Import "common.bqn"
+⟨Lines, N, Split⟩ ← •Import "common.bqn"
 
-x ← ∨+´¨N(0=≠)_split Lines "2022_01"
+x ← ∨+´¨N (0=≠)¨⊸Split Lines "2022_01"
 
 # Part 1
 •Out ⊑x

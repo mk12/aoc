@@ -9,14 +9,14 @@ Input ⇐ •file.Bytes Path
 # Reads the problem input as a list of lines.
 Lines ⇐ •file.Lines Path
 
-# Splits 𝕩 at elements that satisfy 𝔽, removing the separators.
-_split ⇐ {(⊢-˜+`×¬)∘(𝔽¨)⊔⊢}
+# Splits 𝕩 based on separator mask 𝕨, removing separators.
+Split ⇐ (⊢-˜+`×¬)⊸⊔
 
-# Like _split, but does not include empty segments.
-_cut ⇐ {(⊢-˜¬×·+`»⊸<)∘(𝔽¨)⊔⊢}
+# Like Split, but does not include empty segments.
+Cut ⇐ (⊢-˜¬×·+`»⊸<)⊸⊔
 
 # Parses a string as a nonnegative integer.
 N ⇐ (10⊸×⊸+˜´∘⌽ -⟜'0')⚇1
 
-# Returns true if 𝕩 is a whitespace character.
-# WS ⇐ 
+# Whitespace characters used in problem inputs.
+ws ⇐ @+10‿32

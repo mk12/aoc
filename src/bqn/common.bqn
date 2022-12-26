@@ -13,7 +13,7 @@ Lines ⇐ •file.Lines Path
 Split ⇐ (⊢-˜+`×¬)⊸⊔
 
 # Like Split, but does not include empty segments.
-Cut ⇐ (⊢-˜¬×·+`»⊸<)⊸⊔
+Cut ⇐ (⊢-˜¬×·+`1⊸»⊸<)⊸⊔
 
 # Parses a string as a nonnegative integer.
 N ⇐ 10⊸×⊸+˜´∘⌽ -⟜'0'

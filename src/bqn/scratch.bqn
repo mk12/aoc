@@ -82,3 +82,14 @@ Nav ← {
 #   2  0 1 2 3 1 2 1
 #   3  0 1 2 3 1 2 3
 #   4  0 1 2 3 4 5 6
+
+# Equivalent functions (or ˜ thereof) that give 𝕩, or 𝕨 if 𝕩 is 0.
+×⟜(0=⊢)+⊢
+×⟜(¬×)+⊢
+⊣+(¬×)⊸×
+⊣+¬∘×⊸×
+⊣+0⊸=⊸×
+⊢+⊣×0=⊢
+
+# fills in gaps of ones with ∨`, not sure if useful.
+(∨`y⊸≥)˘↕10

@@ -93,3 +93,9 @@ Nav ← {
 
 # fills in gaps of ones with ∨`, not sure if useful.
 (∨`y⊸≥)˘↕10
+
+
+# Ways of getting 1,0 -1,0 0,1 0,-1
+(∾⟜-=⌜˜↕2)
+(1-|∘-⟜1)¨↕4   # 1-|x-1|
+(1-˜|∘-⟜1)¨↕4  # |x-2|-1

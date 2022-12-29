@@ -4,16 +4,10 @@
 
 ⟨Lines, N⟩ ← •Import "common.bqn"
 
-x ← >((N 2⊸↓)⋈(∾⟜-=⌜˜↕2)⊏˜"DRUL"⊐⊑)¨ Lines "2022_09"
+x ← ∾((↕∘N 2⊸↓)⊢⌜(∾⟜-=⌜˜↕2)⊏˜"DRUL"⊐⊑)¨ Lines "2022_09"
 
-# Simulates n‿dx‿dy step 𝕨, updating head‿tails state 𝕩.
-S ← {
-  n‿d ← 𝕨 ⋄ {
-    h‿t ← 𝕩
-    e ← 0>+´d×h-˜¯1⊏t
-    ⟨h+d, h∾˜⍟e t⟩
-  }⍟n 𝕩
-}
+# Simulates dx‿dy step 𝕨, updating head‿tails state 𝕩.
+S ← {h‿t←𝕩 ⋄ ⟨h+𝕨, h∾˜⍟(0>+´𝕨×h-˜¯1⊏t)t⟩}
 
 # Part 1
 •Out ≠⍷1⊑⟨0‿0,[0‿0]⟩S˝⌽x

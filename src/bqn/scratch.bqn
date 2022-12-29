@@ -98,7 +98,7 @@ Nav ← {
 # Ways of getting 1,0 -1,0 0,1 0,-1
 (∾⟜-=⌜˜↕2)
 (1-|∘-⟜1)¨↕4   # 1-|x-1|
-(1-˜|∘-⟜1)¨↕4  # |x-2|-1
+(1-˜|∘-⟜2)¨↕4  # |x-2|-1
 
 #               ¯1      0       1
 # . . .             | 0 0 0 |      
@@ -117,3 +117,31 @@ Nav ← {
 
 # Farthest head goes:
 # ¯65-490,¯227-100
+
+
+###### VERY INTERESTING OPTIMIZATION
+# In 2022_09.bqn at 116688ff12f0af995db9af489b3c7d434a102b80,
+# this was 8-12ms (usually 11):
+S ← {
+  n‿d ← 𝕨 ⋄ h‿t ← 𝕩
+  e ← 1++´d×h-˜¯1⊏t
+  ⟨h+n×d, t∾e↓h⊸+˘(↕n)×⌜d⟩
+}
+# This (doing one at a time) was much slower, ~25ms:
+S ← {
+  n‿d ← 𝕨 ⋄ {
+    h‿t ← 𝕩
+    e ← 1++´d×h-˜¯1⊏t
+    ⟨h+d, t∾e↓≍h⟩
+  }⍟n 𝕩
+}
+# But this was back down to 11ms!
+S ← {
+  n‿d ← 𝕨 ⋄ {
+    h‿t ← 𝕩
+    e ← 0>+´d×h-˜¯1⊏t
+    ⟨h+d, h∾˜⍟e t⟩
+  }⍟n 𝕩
+}
+# Also prepending instead of appending to t was slower (15ms).
+####################################

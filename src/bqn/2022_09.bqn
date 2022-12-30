@@ -4,8 +4,8 @@
 
 ⟨Lines, N⟩ ← •Import "common.bqn"
 
-# Table of dx‿dy head movements, expanded to use only 0 and ±1.
-steps ← ∾((↕∘N 2⊸↓)⊢⌜(∾⟜-=⌜˜↕2)⊏˜"RULD"⊐⊑)¨ Lines "2022_09"
+# List of dx‿dy head movements, expanded to use only 0 and ±1.
+steps ← ∾((N 2⊸↓)⥊·<(∾⟜-=⌜˜↕2)⊏˜"RULD"⊐⊑)¨ Lines "2022_09"
 
 # Updates tail 𝕩 to follow head 𝕨.
 F ← ⊢+(∨´2≤·|-)×¯1⌈1⌊-
@@ -14,7 +14,7 @@ F ← ⊢+(∨´2≤·|-)×¯1⌈1⌊-
 M ← F`<⊸(+⌾⊑)
 
 # List of successive 10-knot ropes during the simulation.
-x ← (<10⥊<0‿0)M˜`<˘steps
+x ← (<10⥊<0‿0)M˜`steps
 
 # Part 1
 •Out ≠⍷1⊏¨x

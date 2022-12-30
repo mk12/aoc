@@ -102,7 +102,12 @@ do_test() {
         msg=FAIL
         ((fails++))
     fi
-    [[ -z "$result" ]] && result=$(tr '\n' ' ' < "$out")
+    if [[ -z "$result" ]]; then
+        result=$(tr '\n' ' ' < "$out")
+        if [[ ${#result} -gt 21 ]]; then
+            result="${result::20}»"
+        fi
+    fi
     printf "%s: %21s ... %4s (%s)\n" "$src" "$result" "$msg" "$elapsed"
 }
 

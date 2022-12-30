@@ -100,6 +100,28 @@ Nav ← {
 (1-|∘-⟜1)¨↕4   # 1-|x-1|
 (1-˜|∘-⟜2)¨↕4  # |x-2|-1
 
+# Tail is in center, head is one of the 9 positions relative to it,
+# and is moving NESW. Number in cell represents how many moves head
+# can go before tail starts moving too. This means the new location
+# of the tail is the first element of N↓L where N is the number in
+# the cell and L is the list from the head's old position (inclusive)
+# to its new position (exclusive). Equivalent, the tail stays where
+# it is for 1/2 and moves to the head's old position for 0.
+#               ¯1      0       1
+# . . .             | 0 0 0 |      
+# . T .  ¯1         | 1 1 1 |      
+# . . .             | 2 2 2 |      
+#            -------+-------+-------
+#             0 1 2 |       | 2 1 0
+#         0   0 1 2 |       | 2 1 0
+#             0 1 2 |       | 2 1 0
+#            -------+-------+-------
+#                   | 2 2 2 |      
+#         1         | 1 1 1 |      
+#                   | 0 0 0 |      
+# With part 2, we can't just apply this repeatedly, because each tail
+# is now a head to the next tail, and tails can move diagonally or not
+# at all, so we need to fill in all the cells, not just NESW.
 #               ¯1      0       1
 # . . .             | 0 0 0 |      
 # . T .  ¯1         | 1 1 1 |      

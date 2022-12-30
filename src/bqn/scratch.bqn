@@ -121,19 +121,26 @@ Nav ← {
 #                   | 0 0 0 |      
 # With part 2, we can't just apply this repeatedly, because each tail
 # is now a head to the next tail, and tails can move diagonally or not
-# at all, so we need to fill in all the cells, not just NESW.
-#               ¯1      0       1
-# . . .             | 0 0 0 |      
-# . T .  ¯1         | 1 1 1 |      
-# . . .             | 2 2 2 |      
-#            -------+-------+-------
-#             0 1 2 |       | 2 1 0
-#         0   0 1 2 |       | 2 1 0
-#             0 1 2 |       | 2 1 0
-#            -------+-------+-------
-#                   | 2 2 2 |      
-#         1         | 1 1 1 |      
-#                   | 0 0 0 |      
+# at all, so we need to fill in all the cells, not just NESW. In this
+# diagram, I will focus on the top-right quadrant since others are
+# symmetrical.
+#
+#
+#
+#
+#
+#
+#              |
+#              |
+#              |
+#              |
+# -------------|--------------
+
+
+#     X
+#    X      X
+#   X      X
+#
 
 # a = (h-t)*x+1
 

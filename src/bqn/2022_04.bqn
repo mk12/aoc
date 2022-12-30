@@ -4,6 +4,7 @@
 
 ⟨Lines, N, Split⟩ ← •Import "common.bqn"
 
+# Section assignments with axes ⟨pairs, elves, endpoints⟩.
 x ← >(>·(N¨'-'⊸=⊸Split)¨','⊸=⊸Split)¨ Lines "2022_04"
 
 # Part 1

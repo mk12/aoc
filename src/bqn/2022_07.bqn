@@ -4,9 +4,13 @@
 
 ⟨Lines, N, Split⟩ ← •Import "common.bqn"
 
+# Helper functions for parsing.
 Group ← (1-˜·+`'$'=⊑¨)⊸⊔
 ParseCmd ← 1⊑""<⊸(∾˜)·' '⊸=⊸Split 2↓⊑
 ParseOut ← ⟨+´·N¨⊏˘,1⊸⊏˘⟩{𝕎𝕩}¨·>¨·(2∾˜'d'=⊑⍟2¨)⊸⊔·' '⊸=⊸Split¨1↓⊢
+
+# Table of steps, of the form ⟨dir, 0, ⟨⟩⟩ for "cd" commands and 
+# ⟨⟨⟩, total_file_size, dirs⟩ for "ls" commands.
 steps ← >(ParseCmd<⊸∾ParseOut)¨ Group Lines "2022_07"
 
 # Navigates to directory 𝕨 in tree 𝕩.
@@ -30,6 +34,7 @@ Agg ← {t ← 𝕊¨⌾(2⊸↓)𝕩 ⋄ (+´1⊸⊑¨2↓t)⊸+⌾(1⊸⊑)t}
 # Returns a list of directory sizes in tree 𝕩, root size last.
 Sizes ← {⟨1⊑𝕩⟩∾´𝕊¨2↓𝕩}
 
+# List of directory sizes in the final tree.
 x ← Sizes Agg 1⊑ ⟨⟩‿⟨"/", 0⟩ Update˝ ⌽steps
 
 # Part 1

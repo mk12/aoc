@@ -18,5 +18,8 @@ Cut ⇐ (⊢-˜¬×·+`1⊸»⊸<)⊸⊔
 # Parses a string as a nonnegative integer.
 N ⇐ (10⊸×⊸+˜´∘⌽ -⟜'0')⊘{𝕊:!"N is monadic"}
 
+# Parses a string as a possibly negative integer.
+Z ⇐ {0=≠𝕩 ? 0 ; ⊑𝕩='-' ? -N 1↓𝕩 ; N 𝕩}
+
 # Whitespace characters used in problem inputs.
 ws ⇐ @+10‿32

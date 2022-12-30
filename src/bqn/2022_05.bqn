@@ -4,16 +4,14 @@
 
 ⟨Cut, Lines, N, Split⟩ ← •Import "common.bqn"
 
+# Initial state (list of top-down crate strings) and steps (table of n‿src‿dst).
 ⟨init, steps⟩ ← ⟨
   (∨`' '⊸≠)⊸/¨·<˘·((1=4|⊢)⊸/↕∘≠)⊸⊏·⍉¯1↓>
   -⟜0‿1‿1˘·>(N¨(<⟜'0'∨>⟜'9')¨⊸Cut)¨
 ⟩{𝕎𝕩}¨(0=≠)¨⊸Split Lines "2022_05"
 
 # Executes step 𝕨 on state 𝕩, applying 𝔽 on moved crates.
-_ex ← {
-  ⟨n, src, dst⟩ ← 𝕨
-  ((n↓⊣) ⋈ ⊢∾˜·𝔽n↑⊣)´⌾(src‿dst⊸⊏)𝕩
-}
+_ex ← {⟨n,src,dst⟩←𝕨 ⋄ ((n↓⊣)⋈⊢∾˜·𝔽n↑⊣)´⌾(src‿dst⊸⊏)𝕩}
 
 # Simulates all steps, applying 𝕏 on moved crates.
 S ← {⊑¨ init 𝕏_ex˝ ⌽steps}

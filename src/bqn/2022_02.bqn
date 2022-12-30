@@ -4,6 +4,7 @@
 
 ⟨Lines⟩ ← •Import "common.bqn"
 
+# Array of 012 for ABC/XYZ with 2 rows and 1 column per line.
 x ← "XA"-˜⍉>2‿0⊸⊏¨ Lines "2022_02"
 
 # Part 1

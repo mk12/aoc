@@ -4,6 +4,7 @@
 
 ⟨Lines, N, Split⟩ ← •Import "common.bqn"
 
+# Sorted calorie sums for each elf.
 x ← ∨(+´N¨)¨(0=≠)¨⊸Split Lines "2022_01"
 
 # Part 1

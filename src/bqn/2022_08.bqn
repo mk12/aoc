@@ -4,6 +4,7 @@
 
 ⟨Lines⟩ ← •Import "common.bqn"
 
+# Table of integer tree heights.
 x ← '0'-˜> Lines "2022_08"
 
 # Applies 𝔽 to table 𝕩 in all four directions.

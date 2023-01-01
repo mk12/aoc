@@ -14,41 +14,34 @@ init‿table ← ⊏˘⊸⋈⟜(1⊸↓˘)⟨
   N¨·(∨˝" ,"=⌜⊢)⊸Cut 18⊸↓, ParseExpr 19⊸↓, N 21⊸↓, N 29⊸↓, N 30⊸↓
 ⟩⊸(⊣{𝕎𝕩}¨(1+↕5)⊸⊏)˘ ↑‿7 ⥊ Lines "2022_11"
 
+# Number of monkeys.
+m ← ≠init
+
+# Least common multiple of all test divisors, to use as modulus.
+k ← •math.LCM´1⊏˘table
+
 # Inspects item 𝕩 given monkey table info 𝕨, returning the new worry level and destination index.
-I ← {f‿d‿t‿e←𝕨 ⋄ (⊢⋈e‿t⊑˜0=d|⊢)⌊3÷˜f○⊢𝕩}
+I ← {f‿d‿t‿e←𝕨 ⋄ (⊢⋈e‿t⊑˜0=d|⊢)k|f○⊢𝕩}
 
 # Runs a turn on items 𝕩 given monkey info 𝕨, returning partial list of items.
-T ← {(((≠table)∾˜(1⊸⊑)¨)⊔⊑¨) 𝕨⊸I¨𝕩}
-(⊏table)T ⟨79,98⟩
-(1⊏table)T ⟨54,65,75,74⟩
+Turn ← {((m∾˜(1⊸⊑)¨)⊔⊑¨) 𝕨⊸I¨𝕩}
 
-R ← {
+Round ← {
+  t ← 𝕨
   𝕩{
     # 𝕨 is index, 𝕩 is state‿nums
     s‿n←𝕩
     ⟨
-      (0⊸↑⌾(𝕨⊸⊑)s)∾¨(𝕨⊏table)T(𝕨⊑s)
+      (0⊸↑⌾(𝕨⊸⊑)s)∾¨(𝕨⊏t)Turn(𝕨⊑s)
       (≠𝕨⊑s)⊸+⌾(𝕨⊸⊑)n
     ⟩
-  }´⌽↕≠⊑𝕩
+  }´⌽↕m
 }
 
-# Part 1
-•Out ×´2↑∨1⊑R⍟20(⊢⋈≠⥊0˙)init
+MB ← {×´2↑∨1⊑𝕩 Round⍟𝕨init⋈m⥊0}
 
-# Part 2
-•Out 2
+# # Part 1
+•Out 20 MB {⌊∘(÷⟜3)∘𝕏}⌾⊑˘ table
 
-
-##########
-## index T entire_state
-# T ← {
-#   f‿d‿t‿e ← 𝕨 ⊏ table
-#   i‿n ← 𝕩
-#   ()¨i
-# }
-
-# R entire_state
-# R ← {
-#   𝕩T´⌽↕≠𝕩
-# }
+# # Part 2
+•Out 1e4 MB table

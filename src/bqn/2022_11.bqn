@@ -18,14 +18,40 @@ init‿rules ← ⊏˘⊸⋈⟜(1⊸↓˘)⟨
 m ← ≠init
 k ← •math.LCM´1⊏˘rules
 
-# Compiles a rule into a function.
-Compile ← {f‿d‿t‿e←𝕩 ⋄ (⊢⊔˜m∾˜·⊑⟜e‿t¨0=d|⊢)k⊸|∘f}
+# Compiles a rule into a function that simulates a turn. That function takes a
+# list of items returns inspected items grouped by destination index.
+CompileTurn ← {f‿d‿t‿e←𝕩 ⋄ (⊢⊔˜m∾˜·⊑⟜e‿t¨0=d|⊢)k⊸|∘f}
+
+# Compiles a list of rules into a function that simulates a round. That function
+# takes s‿c where s is a list like init and c is a list of inspection counts.
+CompileRound ← {
+  q ← ⌽(↕m)⋈¨(CompileTurn˘ 𝕩)
+  {
+    {
+      s‿n←𝕩
+      i‿c←𝕨
+      a←i⊑s
+      ⟨
+        (⟨⟩˙⌾(i⊸⊑)s)∾¨c○⊢a,
+        (≠a)⊸+⌾(i⊸⊑)n
+      ⟩
+    }´⟜q 𝕩
+  }
+}
 
 # Simulates one round using compiled rules 𝕨 on items‿counts 𝕩.
-R ← {c←𝕨 ⋄ 𝕩{s‿n←𝕩 ⋄ a←𝕨⊑s ⋄ ⟨(⟨⟩˙⌾(𝕨⊸⊑)s)∾¨(𝕨⊑c)○⊢a, (≠a)⊸+⌾(𝕨⊸⊑)n⟩}´⌽↕m}
+# Round ← {
+#   s‿n←𝕩
+#   i‿c←𝕨
+#   a←i⊑s
+#   ⟨
+#     (⟨⟩˙⌾(i⊸⊑)s)∾¨c○⊢a,
+#     (≠a)⊸+⌾(i⊸⊑)n
+#   ⟩
+# }´⟜(⌽(↕m)⋈¨⊢)
 
 # Returns the level of monkey business after 𝕨 rounds using rules 𝕩.
-MB ← {×´2↑∨1⊑(Compile˘𝕩)R⍟𝕨init⋈m⥊0}
+MB ← {×´2↑∨1⊑(CompileRound 𝕩)⍟𝕨init⋈m⥊0}
 
 # Part 1
 •Out 20 MB {⌊∘÷⟜3∘𝕏}⌾⊑˘rules

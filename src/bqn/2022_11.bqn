@@ -19,7 +19,7 @@ k ← •math.LCM´1⊏˘cmds
 
 # Simulates one turn using command 𝕨 (function, divisor, true/false indices) on
 # items 𝕩, returning a list of m lists with items grouped by their destination.
-T ← {f‿d‿i←𝕨 ⋄ (⊢⊔˜m∾˜·⊑⟜i¨0≠d|⊢)k⊸|∘f¨𝕩}
+T ← {f‿d‿i←𝕨 ⋄ (⊢⊔˜m∾˜·⊑⟜i¨0≠d|⊢)k⊸|∘f𝕩}
 
 # Simulates one round using commands 𝕨 on items‿counts 𝕩.
 R ← {c←𝕨 ⋄ 𝕩{s‿n←𝕩 ⋄ a←𝕨⊑s ⋄ ⟨(0⊸↑⌾(𝕨⊸⊑)s)∾¨(𝕨⊏c)T a, (≠a)⊸+⌾(𝕨⊸⊑)n⟩}´⌽↕m}

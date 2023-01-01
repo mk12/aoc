@@ -22,7 +22,7 @@ k ← •math.LCM´1⊏˘rules
 Compile ← {f‿d‿t‿e←𝕩 ⋄ (⊢⊔˜m∾˜·⊑⟜e‿t¨0=d|⊢)k⊸|∘f}
 
 # Simulates one round using compiled rules 𝕨 on items‿counts 𝕩.
-R ← {c←𝕨 ⋄ 𝕩{s‿n←𝕩 ⋄ a←𝕨⊑s ⋄ ⟨(0⊸↑⌾(𝕨⊸⊑)s)∾¨(𝕨⊑c)○⊢a, (≠a)⊸+⌾(𝕨⊸⊑)n⟩}´⌽↕m}
+R ← {c←𝕨 ⋄ 𝕩{s‿n←𝕩 ⋄ a←𝕨⊑s ⋄ ⟨(⟨⟩˙⌾(𝕨⊸⊑)s)∾¨(𝕨⊑c)○⊢a, (≠a)⊸+⌾(𝕨⊸⊑)n⟩}´⌽↕m}
 
 # Returns the level of monkey business after 𝕨 rounds using rules 𝕩.
 MB ← {×´2↑∨1⊑(Compile˘𝕩)R⍟𝕨init⋈m⥊0}

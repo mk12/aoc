@@ -7,41 +7,28 @@
 # Parses an expression like "old + 5" or "old * old" into a function.
 ParseExpr ← {a‿f‿b←' '⊸=¨⊸Split 𝕩 ⋄ a(+‿×⊑˜"+*"⊐f){𝕨⊸𝔽⟜𝕩}○{𝕩≡"old"?⊢;N𝕩}b}
 
-# Lists of starting items for each monkey, and a table where each row contains
-# four elements: operation, test divisor, and throwing index for true/false.
-init‿table ← ⊏˘⊸⋈⟜(1⊸↓˘)⟨
+# List of starting items and table of commands for each monkey. A command
+# contains an operation, test divisor, and pair of true/false indices.
+init‿cmds ← ⊏˘⊸⋈⟜(1‿2⊸⊏⊸∾⟜(<3‿4⊸⊏)˘)⟨
   N¨·(∨˝" ,"=⌜⊢)⊸Cut 18⊸↓, ParseExpr 19⊸↓, N 21⊸↓, N 29⊸↓, N 30⊸↓
-⟩⊸(⊣{𝕎𝕩}¨(1+↕5)⊸⊏)˘ ↑‿7 ⥊ Lines "2022_11"
+⟩⊸(⊣{𝕎𝕩}¨(1+↕5)⊸⊏)˘↑‿7⥊Lines "2022_11"
 
-# Number of monkeys.
+# Constants: the number of monkeys, and the LCM of all test divisors.
 m ← ≠init
+k ← •math.LCM´1⊏˘cmds
 
-# Least common multiple of all test divisors, to use as modulus.
-k ← •math.LCM´1⊏˘table
+# Simulates one turn using command 𝕨 (function, divisor, true/false indices) on
+# items 𝕩, returning a list of m lists with items grouped by their destination.
+T ← {f‿d‿i←𝕨 ⋄ (⊢⊔˜m∾˜·⊑⟜i¨0≠d|⊢)k⊸|∘f¨𝕩}
 
-# Inspects item 𝕩 given monkey table info 𝕨, returning the new worry level and destination index.
-I ← {f‿d‿t‿e←𝕨 ⋄ (⊢⋈e‿t⊑˜0=d|⊢)k|f○⊢𝕩}
+# Simulates one round using commands 𝕨 on items‿counts 𝕩.
+R ← {c←𝕨 ⋄ 𝕩{s‿n←𝕩 ⋄ a←𝕨⊑s ⋄ ⟨(0⊸↑⌾(𝕨⊸⊑)s)∾¨(𝕨⊏c)T a, (≠a)⊸+⌾(𝕨⊸⊑)n⟩}´⌽↕m}
 
-# Runs a turn on items 𝕩 given monkey info 𝕨, returning partial list of items.
-Turn ← {((m∾˜(1⊸⊑)¨)⊔⊑¨) 𝕨⊸I¨𝕩}
+# Returns the level of monkey business after 𝕨 rounds using commands 𝕩.
+MB ← {×´2↑∨1⊑𝕩R⍟𝕨init⋈m⥊0}
 
-Round ← {
-  t ← 𝕨
-  𝕩{
-    # 𝕨 is index, 𝕩 is state‿nums
-    s‿n←𝕩
-    ⟨
-      (0⊸↑⌾(𝕨⊸⊑)s)∾¨(𝕨⊏t)Turn(𝕨⊑s)
-      (≠𝕨⊑s)⊸+⌾(𝕨⊸⊑)n
-    ⟩
-  }´⌽↕m
-}
+# Part 1
+•Out 20 MB {⌊∘÷⟜3∘𝕏}⌾⊑˘cmds
 
-# Returns the level of monkey business after 𝕨 rounds for table 𝕩.
-MB ← {×´2↑∨1⊑𝕩 Round⍟𝕨init⋈m⥊0}
-
-# # Part 1
-•Out 20 MB {⌊∘(÷⟜3)∘𝕏}⌾⊑˘ table
-
-# # Part 2
-•Out 1e4 MB table
+# Part 2
+•Out 1e4 MB cmds

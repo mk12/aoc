@@ -25,34 +25,13 @@ CompileRule ← {f‿d‿t‿e←𝕩 ⋄ (⊢⊔˜m∾˜·⊑⟜e‿t¨0=d|⊢)
 # Compiles an index 𝕨 and rule 𝕩 into a function that simulates a turn by
 # updating state ⟨lists of items, list of inspection counts⟩.
 CompileTurn ← {
-  i ← 𝕨
-  r ← CompileRule 𝕩
-  {
-    s‿n←𝕩
-    a←i⊑s
-    ⟨
-      (⟨⟩˙⌾(i⊸⊑)s)∾¨R a,
-      (≠a)⊸+⌾(i⊸⊑)n
-    ⟩
+  j←𝕨 ⋄ r←CompileRule 𝕩 ⋄ {
+    s‿c←𝕩 ⋄ i←j⊑s ⋄ ⟨(⟨⟩˙⌾(j⊸⊑)s)∾¨R i, (≠i)⊸+⌾(j⊸⊑)c⟩
   }
 }
 
-# Compiles a list of rules into a function that simulates a round by updating
-# state ⟨lists of items, list of inspection counts⟩.
-CompileRound ← {
-  {𝕎𝕏}´⌽(↕m)CompileTurn¨<˘𝕩
-}
-
-# Simulates one round using compiled rules 𝕨 on items‿counts 𝕩.
-# Round ← {
-#   s‿n←𝕩
-#   i‿c←𝕨
-#   a←i⊑s
-#   ⟨
-#     (⟨⟩˙⌾(i⊸⊑)s)∾¨c○⊢a,
-#     (≠a)⊸+⌾(i⊸⊑)n
-#   ⟩
-# }´⟜(⌽(↕m)⋈¨⊢)
+# Compiles a list of rules into a function that simulates a round.
+CompileRound ← {𝕏𝕎}´(↕m)CompileTurn¨<˘
 
 # Returns the level of monkey business after 𝕨 rounds using rules 𝕩.
 MB ← {×´2↑∨1⊑(CompileRound 𝕩)⍟𝕨init⋈m⥊0}

@@ -4,9 +4,8 @@
 
 ⟨Cut, Lines, N, Split⟩ ← •Import "common.bqn"
 
-# Helper functions for parsing.
-ParseArg ← {𝕩≡"old" ? ⊢ ; N𝕩}
-ParseExpr ← {⟨x,f,y⟩←(' '⊸=)¨⊸Split𝕩 ⋄ (ParseArg x)⊸(+‿×⊑˜"+*"⊐f)⟜(ParseArg y)}
+# Parses an expression like "old + 5" or "old * old" into a function.
+ParseExpr ← {a‿f‿b←' '⊸=¨⊸Split 𝕩 ⋄ a(+‿×⊑˜"+*"⊐f){𝕨⊸𝔽⟜𝕩}○{𝕩≡"old"?⊢;N𝕩}b}
 
 # Lists of starting items for each monkey, and a table where each row contains
 # four elements: operation, test divisor, and throwing index for true/false.
@@ -38,6 +37,7 @@ Round ← {
   }´⌽↕m
 }
 
+# Returns the level of monkey business after 𝕨 rounds for table 𝕩.
 MB ← {×´2↑∨1⊑𝕩 Round⍟𝕨init⋈m⥊0}
 
 # # Part 1

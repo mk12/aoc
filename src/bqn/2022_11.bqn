@@ -25,9 +25,7 @@ CompileRule ← {f‿d‿t‿e←𝕩 ⋄ (⊢⊔˜m∾˜·⊑⟜e‿t¨0=d|⊢)
 # Compiles an index 𝕨 and rule 𝕩 into a function that simulates a turn by
 # updating state ⟨lists of items, list of inspection counts⟩.
 CompileTurn ← {
-  j←𝕨 ⋄ r←CompileRule 𝕩 ⋄ {
-    s‿c←𝕩 ⋄ i←j⊑s ⋄ ⟨(⟨⟩˙⌾(j⊸⊑)s)∾¨R i, (≠i)⊸+⌾(j⊸⊑)c⟩
-  }
+  j←𝕨 ⋄ r←CompileRule 𝕩 ⋄ {s‿c←𝕩 ⋄ i←j⊑s ⋄ ⟨(R i)∾˜¨⟨⟩˙⌾(j⊸⊑)s, (≠i)⊸+⌾(j⊸⊑)c⟩}
 }
 
 # Compiles a list of rules into a function that simulates a round.

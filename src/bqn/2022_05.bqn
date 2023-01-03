@@ -11,7 +11,7 @@
 ⟩{𝕎𝕩}¨(0=≠)¨⊸Split Lines "2022_05"
 
 # Executes step 𝕨 on state 𝕩, applying 𝔽 on moved crates.
-_ex ← {⟨n,src,dst⟩←𝕨 ⋄ ((n↓⊣)⋈⊢∾˜·𝔽n↑⊣)´⌾(src‿dst⊸⊏)𝕩}
+_ex ← {n‿src‿dst←𝕨 ⋄ ((n↓⊣)⋈⊢∾˜·𝔽n↑⊣)´⌾(src‿dst⊸⊏)𝕩}
 
 # Simulates all steps, applying 𝕏 on moved crates.
 S ← {⊑¨ init 𝕏_ex˝ ⌽steps}

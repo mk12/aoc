@@ -3,10 +3,10 @@
 # Reads the problem input as a string.
 Input ← &fras $"../../input/_.in"
 
-# Calculate group indices to split around a delimiter.
-Split ← -∶×⊃¬\+.=,
+# Reads the problem input as a list of lines.
+Lines ← |2 ⊕|⊙(⍜▽¯∶\+.=@\n.Input)
 
 # Parses a string as an integer, returning ∞ if empty.
 Z ← ?⋅∞parse=0⧻.
 
-Input_Split_Z
+Input_Lines_Z

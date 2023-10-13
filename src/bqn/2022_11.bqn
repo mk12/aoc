@@ -4,6 +4,8 @@
 
 ⟨Cut, Lines, N, Split⟩ ← •Import "common.bqn"
 
+# TODO: try mutating namespaces
+
 # Parses an expression like "old + 5" or "old * old" into a function.
 ParseExpr ← {a‿f‿b←' '⊸=¨⊸Split 𝕩 ⋄ a(+‿×⊑˜"+*"⊐f){𝕨⊸𝔽⟜𝕩}○{𝕩≡"old"?⊢;N𝕩}b}
 

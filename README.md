@@ -1,6 +1,6 @@
 # Advent of Code
 
-These are my solutions to [Advent of Code] problems, written in [J] and [Zig].
+These are my solutions to [Advent of Code] problems. They are mostly written in array programming languages like [J], [BQN], and [Uiua].
 
 ## Usage
 
@@ -24,5 +24,7 @@ Options
 These AoC solutions are available under the MIT License; see [LICENSE](LICENSE.md) for details.
 
 [Advent of Code]: https://adventofcode.com
+[BQN]: https://mlochbaum.github.io/BQN/
 [J]: https://www.jsoftware.com
+[Uiua]: https://www.uiua.org
 [Zig]: https://ziglang.org

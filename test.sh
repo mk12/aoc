@@ -222,4 +222,13 @@ debug_run_bqn() {
     bqn -e "$(< "${src##*/}")" -r
 }
 
+build_uiua() {
+    command -v uiua &> /dev/null || die "uiua not installed"
+}
+
+run_uiua() {
+    cd src/uiua
+    uiua run --no-format --no-update "${src##*/}"
+}
+
 main "$@"

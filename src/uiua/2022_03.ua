@@ -4,15 +4,13 @@
 
 Lines ← use "Lines" &i "common.ua"
 
-x ← ⬚@. Lines(↯2_¯1) "2022_03"
+x ← Lines(□) "2022_03"
 
 # Returns the sum of priorities of characters.
 P ← /+-⊏∶-1_27"aA"<@a.
 
 # Part 1
-&p P≡/(⊢▽∊,)x
-# &p P≡/(⊢▽∊,)⬚@_∵(↯2_¯1⊔)x
-# &p P∵(/(⊢▽∊,)↯2_¯1⊔)x
+&p P∵(/(⊢▽∊,)↯2_¯1⊔)x
 
 # Part 2
-# &p P♭≡/(⊝▽∊,∩⊔)↯¯1_3x
+&p P♭≡/(⊝▽∊,∩⊔)↯¯1_3x

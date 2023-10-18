@@ -5,11 +5,12 @@
 Input ← use "Input" &i "common.ua"
 Z ← use "Z" &i "common.ua"
 
-# Initial state (list of top-down crate strings) and steps (table of n_src_dst).
-,,⊃(≡(□▽≠@ .)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(↯¯1_3⊜Z≤5⌵-@5.↘⊗@m.↘)-1⊗@1. Input "2022_05"
+# Initial state (top-down crate strings) and steps (table of n_src_dst).
+,,⊃(≡(□▽≠@ .)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(∺-↧1⇡3↯¯1_3⊜Z≤5⌵-@5.↘⊗@m.↘)-1⊗@1.Input"2022_05"
 
 # Simulates all steps, reversing crates when moving if the argument is 1.
-s ← ∵⊢∧(⍜⊏{⊙(⊂?⇌∘∶⊙∶)⊃↘↙⊙(∩⊔⊃⊢'⊏1)∶}-1⊃⋅'↘2⊙⊃'⊡1⊢)⊙∺⊂∶
+# s ← ∵⊢∧(⍜⊏{⊙(⊂?⇌∘∶⊙∶)⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶}⊃⋅'↘2⊙⊃'⊡1⊢)⊙∺⊂∶
+s ← ⊙;∵⊢∧(⍜⊏{⊙(⊂?⇌∘∶⊙∶)⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶}↘1⊃⊃⋅⋅∘⊙⋅⊢⋅.)∶
 
 # Part 1
 &p s1

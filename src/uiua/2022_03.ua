@@ -4,7 +4,7 @@
 
 Lines ← use "Lines" &i "common.ua"
 
-. Lines(□) "2022_03"
+.Lines(□)"2022_03"
 
 # Returns the sum of priorities of characters.
 p ← /+-⊏∶-1_27"aA"<@a.

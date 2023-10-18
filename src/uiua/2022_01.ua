@@ -6,7 +6,7 @@ Lines ← use "Lines" &i "common.ua"
 Z ← use "Z" &i "common.ua"
 
 # Sorted calorie sums for each elf.
-.⊏⍖.⊜/+≠∞. Lines(Z) "2022_01"
+.⊏⍖.⊜/+≠∞.Lines(Z)"2022_01"
 
 # Part 1
 &p ⊢

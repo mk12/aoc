@@ -11,21 +11,6 @@ Z ← use "Z" &i "common.ua"
 # Simulates all steps, reversing crates when moving if the argument is 1.
 s ← ∵⊢∧(⍜⊏{⊙(⊂?⇌∘∶⊙∶)⊃↘↙⊙(∩⊔⊃⊢'⊏1)∶}-1⊃⋅'↘2⊙⊃'⊡1⊢)⊙∺⊂∶
 
-# state [r n src dst]
-# [r n src dst] state
-# [src dst] n state
-# [src dst] state n r
-
-# [a b] n r
-# a b n r
-
-# [a b] n r
-# n [a b] r
-# n a b r
-# A1 A0 B r
-# A1 A0 r B
-# A1 r A0 B
-
 # Part 1
 &p s1
 

@@ -1,0 +1,16 @@
+# Copyright 2023 Mitchell Kember. Subject to the MIT License.
+# Advent of Code 2022
+# Day 6: Tuning Trouble
+
+Input ← use "Input" &i "common.ua"
+
+.Input"2022_06"
+
+# Returns first marker endpoint given a window size.
+m ← +⊗,≡'⧻⊝◫,∶
+
+# Part 1
+&p m4
+
+# Part 2
+&p m14

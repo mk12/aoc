@@ -4,6 +4,15 @@
 
 &fras "../../input/2022_07.in"
 
-↙5⊜(?(□↘4↘¯1)(□↯¯1_2↘1⊜□>@ .)=@c⊡1.)≠@$.
+# Parses ls output into total file size and a list of directories.
+ParseLs ← ⊃(/+≡'parse⊢▽¬)(□≡'⊏1▽)=@d≡'⊢⊢.↯¯1_2⊜□>@\s.
 
-# Lines(□?'↘5∘=@$⊢.)"2022_07"
+# List of steps...
+↙5⊜(?(⊂@c□)[ParseLs]=@c⊃'⊡1'↘4↘¯1)≠@$.
+
+# List of directory sizes in the final tree.
+;∧⋄⋄~(=@c⊢.)"/"[]
+
+# Part 1
+
+# Part 2

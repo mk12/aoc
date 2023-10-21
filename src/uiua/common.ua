@@ -4,9 +4,8 @@
 Input ← &fras $"../../input/_.in"
 
 # Reads the problem input as a list of lines.
-Lines ← |2 ⊕|⊙(⍜▽¯∶\+.=@\n.Input)
+Lines! ← |1 ⊕^⍜▽¯∶\+.=@\n.Input
 
 # Parses a string as an integer, returning ∞ if empty.
-Z ← ?⋅∞parse=0⧻.
-
-Input_Lines_Z
+# Z ← ?⋅∞parse=0⧻.
+Z ← ⍣parse⋅⋅∞

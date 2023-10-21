@@ -2,9 +2,7 @@
 # Advent of Code 2022
 # Day 6: Tuning Trouble
 
-Input ← &i "common.ua" "Input"
-
-.Input "2022_06"
+.&fras "../../input/2022_06.in"
 
 # Returns first marker endpoint given a window size.
 m ← +⊗,≡'⧻⊝◫,∶

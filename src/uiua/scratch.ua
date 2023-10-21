@@ -29,3 +29,16 @@
 # ⧻ □[1 2]
 
 # =.NaN
+
+# Dict ← ⍉[{"test" 50} {"testert" 60}]
+# GetFromDict ← ⊡⊗□⊙⍘⊟
+# GetFromDict "test" Dict
+
+# ▽ [3 1 2] +1⇡ 3
+
+# Ways of doing 2022_01:
+# Sorted calorie sums for each elf.
+# .⊏⍖.⊜/+≠∞.⊕(?⋅∞parse=0⧻.)⍜▽¯∶\+.=@\n.
+# .⊏⍖.⊜(/+⊜parse≠@\n.)¬⊂0⌕"\n\n".
+# .⊏⍖.⊜(/+⊜parse≠@\n.)↥↻1.≠@\n.
+# .⊏⍖.⊕/+⊃(▽∶+1⇡⧻.⊜/+¬⬚×1↘1..⊂1¬)⊜parse≠@\n.

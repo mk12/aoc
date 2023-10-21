@@ -2,11 +2,10 @@
 # Advent of Code 2022
 # Day 4: Camp Cleanup
 
-Lines! ← &i "common.ua" "Lines!"
-Z ← &i "common.ua" "Z"
+&fras "../../input/2022_04.in"
 
 # Section assignments with axes [elves endpoints pairs].
-.⍉↯¯1_2_2Lines!(⊜Z≥@0.) "2022_04"
+.⍉↯¯1_2_2⊜parse≥@0.
 
 # Part 1
 &p /+≤0/×/-

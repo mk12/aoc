@@ -2,11 +2,10 @@
 # Advent of Code 2022
 # Day 1: Calorie Counting
 
-Lines! ← &i "common.ua" "Lines!"
-Z ← &i "common.ua" "Z"
+&fras "../../input/2022_01.in"
 
 # Sorted calorie sums for each elf.
-.⊏⍖.⊜/+≠∞.Lines!Z"2022_01"
+.⊏⍖.⊜(/+⊜parse≠@\n.)↥↻1.≠@\n.
 
 # Part 1
 &p ⊢

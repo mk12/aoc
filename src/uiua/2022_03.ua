@@ -2,9 +2,10 @@
 # Advent of Code 2022
 # Day 3: Rucksack Reorganization
 
-Lines! ← &i "common.ua" "Lines!"
+&fras "../../input/2022_03.in"
 
-.Lines!□ "2022_03"
+# List of rucksack strings.
+.⊜□≠@\n.
 
 # Returns the sum of priorities of characters.
 p ← /+-⊏∶-1_27"aA"<@a.

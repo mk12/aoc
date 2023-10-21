@@ -5,7 +5,7 @@
 &fras "../../input/2022_05.in"
 
 # Initial state (top-down crate strings) and steps (table of n_src_dst).
-,,⊃(≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(∺-0_1_1↯¯1_3⊜parse≤5⌵-@5.↘⊗@m.↘)-1⊗@1.
+,,⊃(≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(∺-0_1_1↯¯1_3⊜parse×≥@0,≤@9.↘⊗@m.↘)-1⊗@1.
 
 # Simulates all steps, reversing crates when moving if the argument is 1.
 s ← ⊙;∵⊢∧⋄⋄~(⍜⊏{⊙(⊂?⇌∘∶⊙∶)⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶}↘1⊃⊃⋅⋅∘⊙⋅⊢⋅.)∶

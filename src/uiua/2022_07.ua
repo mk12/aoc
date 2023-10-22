@@ -4,18 +4,25 @@
 
 &fras "../../input/2022_07.in"
 
-# Mixed list of directories (cd) and total file sizes (ls).
-↙12↘1⊜(□?∘(/+⊜parse×≥@0,≤@9.)=@c⊃'⊡1'↘4↘¯1)≠@$.
+# Commands as ¯2 (cd dir), ¯1 (cd ..), or total file size (ls). Skips "cd /".
+↘1⊜((-2/↥=@.|/+⊜parse×≥@0,≤@9.)=@l⊏1.)≠@$.
+
+# Table of [size parent] for each directory.
+∧~⋄⋄((-1⧻.⊂∶⊂0;|⊏1⊏⊙.;|⊙(⍜⊡;⊂∶0).⊙∶∶)↧2+2.)⊙'0[0_∞]
+
+# SIZE cwd STATE
+# cwd STATE SIZE
 
 # List of 0 (ls), 1 (cd dir), and 2 (cd ..).
-∵(+⊃'≍".."type⊔).
+# ∵(+⊃'≍".."type⊔).
 
 # IDEA: don't need to store dir names at all
 # just do size, and inf/-1 for cd/cd..
 
 # List of directory sizes in the final tree.
 # ∧⋄⋄~~(|2 (⍜'⊔⊡⊂1∶|;|⍜⊢;∶⊡∩'⊔⊡0,2.;)+⊃'≍".."type.⊔∶)0[0_∞]
-∧⋄⋄~~((⊃∘(⍜⊡;⊂∶0)⊙⊙⊔|⊙⊙;|⊃(⊡⊂∶1)⋅∘⊙⊙;)∶⊙∶)0[0_∞]
+
+# ∧⋄⋄~~((⊃∘(⍜⊡;⊂∶0)⊙⊙⊔|⊙⊙;|⊃(⊡⊂∶1)⋅∘⊙⊙;)∶⊙∶)0[0_∞]
 
 # cwd [size parent] 0/1/2 dir/size
 # 0/1/2 cwd [size parent] dir/size

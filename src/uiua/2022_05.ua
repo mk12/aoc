@@ -7,11 +7,12 @@
 # Initial state (top-down crate strings) and steps (table of n_src_dst).
 ,,⊃(≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(∺-0_1_1↯¯1_3⊜parse×≥@0,≤@9.↘⊗@m.↘)-1⊗@1.
 
-# Simulates all steps, reversing crates when moving if the argument is 1.
-s ← ⊙;∵⊢∧⋄⋄~(⍜⊏{⊙(⊂?⇌∘∶⊙∶)⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶}↘1⊃⊃⋅⋅∘⊙⋅⊢⋅.)∶
+# Simulates all steps, applying the given function to moved crates.
+# TODO: Remove the stack signatures when possible.
+s! ← |2 ∵⊢∧⋄~(|2 ⍜⊏(|2 {⊙'⊂^⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶})⊃⋅'↘1⊙⊢)
 
 # Part 1
-&p s1
+&p s!⇌
 
 # Part 2
-&p s0
+&p s!∘

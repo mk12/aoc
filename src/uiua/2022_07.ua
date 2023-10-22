@@ -4,14 +4,24 @@
 
 &fras "../../input/2022_07.in"
 
-# Commands as ¯2 (cd dir), ¯1 (cd ..), or total size (ls). Skips the "cd /".
+# Commands as ¯2 (cd dir), ¯1 (cd ..), or direct size (ls). Skips the "cd /".
 ↘1⊜((-2/↥=@.|/+⊜parse×≥@0,≤@9.)=@l⊏1.)≠@$.
 
-# Table of [size parent] for each directory.
-;∧~⋄⋄((-1⧻.⊂∶⊂0;|⊏1⊏⊙.;|⊙(⍜⊡;⊂∶0).⊙∶∶)↧2+2.)⊙'0[0_¯1]
+# Table of [parent size] for each directory.
+;∧~⋄⋄((-1⧻.⊂∶⊂∶0;|⊢⊏⊙.;|⊙(⍜⊡;⊂∶1).⊙∶∶)↧2+2.)⊙'0[¯1_0]
 
 # List of recursive directory sizes.
+.∧~~⋄(⍜⊏+⊙∶∶⊏⊙,)∩⇌⇡⧻.∩∺⊏0,1
+
+# from to [s ...]
+# inc to [s ...]
+# to [s... ] inc
+
+# ≡⊂⇡⧻.
+# :≡'⊏1.
+# ⊏⍏.
 
 # Part 1
+/+×≤1e5.
 
 # Part 2

@@ -4,7 +4,7 @@
 
 .&fras "../../input/2022_06.in"
 
-# Returns first marker endpoint given a window size.
+# Finds the start of the packet given a window size.
 m ← +⊗,≡'⧻⊝◫,∶
 
 # Part 1

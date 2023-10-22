@@ -7,7 +7,7 @@
 # List of rucksack strings.
 .⊜□≠@\n.
 
-# Returns the sum of priorities of characters.
+# Calculates the sum of priorities of characters.
 p ← /+-⊏∶-1_27"aA"<@a.
 
 # Part 1

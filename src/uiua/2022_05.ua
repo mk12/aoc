@@ -8,8 +8,7 @@
 ,,⊃(≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(∺-0_1_1↯¯1_3⊜parse×≥@0,≤@9.↘⊗@m.↘)-1⊗@1.
 
 # Simulates all steps, applying the given function to moved crates.
-# TODO: Remove the stack signatures when possible.
-s! ← |2 ∵⊢∧⋄~(|2 ⍜⊏(|2 {⊙'⊂^⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶})⊃⋅'↘1⊙⊢)
+s! ← ∵⊢∧⋄~(⍜⊏{⊙'⊂^1⊃↘↙⊙(∩⊔⊃⊢'⊡1)∶}⊃⋅'↘1⊙⊢)
 
 # Part 1
 &p s!⇌

@@ -4,7 +4,7 @@
 
 &fras "../../input/2022_01.in"
 
-# Sorted calorie sums for each elf.
+# Calory sums in descending order.
 .⊏⍖.⊜(/+⊜parse≠@\n.)↥↻1.≠@\n.
 
 # Part 1

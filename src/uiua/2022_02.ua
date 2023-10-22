@@ -4,7 +4,7 @@
 
 &fras "../../input/2022_02.in"
 
-# Array of 012 for ABC/XYZ with 2 rows and a column per line.
+# Table of 012 for ABC/XYZ with shape 2_N.
 .-"AX"⊏0_2⍉⊜∘≠@\n.
 
 # Part 1

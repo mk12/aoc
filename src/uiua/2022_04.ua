@@ -4,7 +4,7 @@
 
 &fras "../../input/2022_04.in"
 
-# Section assignments with axes [elves endpoints pairs].
+# Section assignments with shape 2_2_N (elf, endpoint, line).
 .⍉↯¯1_2_2⊜parse≥@0.
 
 # Part 1

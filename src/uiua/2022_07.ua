@@ -7,8 +7,18 @@
 # Mixed list of directories (cd) and total file sizes (ls).
 ↙12↘1⊜(□?∘(/+⊜parse×≥@0,≤@9.)=@c⊃'⊡1'↘4↘¯1)≠@$.
 
+# List of 0 (ls), 1 (cd dir), and 2 (cd ..).
+∵(+⊃'≍".."type⊔).
+
+# IDEA: don't need to store dir names at all
+# just do size, and inf/-1 for cd/cd..
+
 # List of directory sizes in the final tree.
-∧⋄~(|2 (⍜'⊔⊡⊂1∶|;|⍜⊢;∶⊡∩'⊔⊡0,2.;)+⊃'≍".."type.⊔∶){0 [] [∞]}
+# ∧⋄⋄~~(|2 (⍜'⊔⊡⊂1∶|;|⍜⊢;∶⊡∩'⊔⊡0,2.;)+⊃'≍".."type.⊔∶)0[0_∞]
+∧⋄⋄~~((⊃∘(⍜⊡;⊂∶0)⊙⊙⊔|⊙⊙;|⊃(⊡⊂∶1)⋅∘⊙⊙;)∶⊙∶)0[0_∞]
+
+# cwd [size parent] 0/1/2 dir/size
+# 0/1/2 cwd [size parent] dir/size
 
 # {cwd flat_list_of_sizes parent_to_child_edges dir_to_child_count}
 
@@ -21,7 +31,7 @@
 # parent of 1 = 0
 
 # cd ..: cwd = parents[cwd]
-# cd x:  cwd = len(sizes)++; sizes[]=0; parents[]=old_cwd
+# cd x:  cwd = N=len(sizes)++; sizes[N]=0; parents[N]=old_cwd
 # ls N:  sizes.push(N)
 
 # Part 1

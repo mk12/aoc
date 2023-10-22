@@ -4,13 +4,17 @@
 
 &fras "../../input/2022_08.in"
 
-# Table of integer tree heights
--@0⊜∘≠@\n.
+# Matrix of integer tree heights
+.-@0⊜∘≠@\n.
 
-# Applies a function in all four directions.
-q! ← ≡(⍉⇌|⇌|⍉|∘)⇡4≡^1[⇌,⇌,⍉.].
+# Given a fill value, shifts rows down, dropping the last one.
+s ← ⬚∘⊂.⊙'↘¯1
+
+# Applies a function under all four rotations of a matrix.
+q! ← ≡(⍉⇌|⇌|⍉|∘)⇡4≡^1[⇌,⇌,⍉.]
 
 # Part 1
-/+♭>/↧q!(⍜⊢¯↻¯1\↥).
+&p /+♭>/↧q!(s¯1\↥).
 
 # Part 2
+&p /↥♭/×q!(≑∸≃⊏∶-s0\(+×=0,)×,∶⇡⧻.⍉⊞≥⇡10.)

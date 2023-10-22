@@ -1,4 +1,4 @@
-# Copyright 2022 Mitchell Kember. Subject to the MIT License.
+# Copyright 2023 Mitchell Kember. Subject to the MIT License.
 # Advent of Code 2022
 # Day 8: Treetop Tree House
 

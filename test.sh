@@ -228,7 +228,15 @@ build_uiua() {
 
 run_uiua() {
     cd src/uiua
-    uiua run --no-format --no-update "${src##*/}"
+    uiua run --no-format "${src##*/}"
+}
+
+build_raku() {
+    command -v rakudo &> /dev/null || die "rakudo not installed"
+}
+
+run_raku() {
+    rakudo "$src" "$in"
 }
 
 main "$@"

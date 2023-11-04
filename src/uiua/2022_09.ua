@@ -7,7 +7,7 @@
 ⊜(×⊏∶1_¯1_0⊗∶"RL"_"UD"⊃⊢(parse↘2))≠@\n.
 
 # Updates tail tx_ty to follow head hx_hy.
-F ← +⊃∘(×/↥≥2⊃⌵±-)
+# F ← +⊃∘(×/↥≥2⊃⌵±-)
 
 # Moves the head of the rope and updates all tail knots.
 # M ← \F

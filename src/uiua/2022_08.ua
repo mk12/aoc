@@ -7,8 +7,8 @@
 # Matrix of integer tree heights
 .-@0⊜∘≠@\n.
 
-# Given a fill value, shifts rows down, dropping the last one.
-s ← ⬚∘⊂.⊙'↘¯1
+# Shifts a row of a given value onto a matrix, dropping the last row.
+s ← ⍜⊢∵⋅∘↻¯1∶
 
 # Applies a function under all four rotations of a matrix.
 q! ← ≡(⍉⇌|⇌|⍉|∘)⇡4≡^1[⇌,⇌,⍉.]

@@ -8,10 +8,10 @@
 ;         ((char=? (peek-char) #\newline) #f)
 ;         (else (yield (read)))))
 
-(define-generator (parse-sums)
-  (yield 1) (yield 2) 3)
+; (define-generator (parse-sums)
+;   (yield 1) (yield 2) 3)
 
-(run
- (lambda ()
-   (let ((g (parse-sums)))
-     (list (g) (g) (g)))))
+; (run
+;  (lambda ()
+;    (let ((g (parse-sums)))
+;      (list (g) (g) (g)))))

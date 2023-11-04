@@ -48,5 +48,4 @@
 (define-syntax (yield x)
   (syntax-violation #f "incorrect usage of yield keyword" x))
 
-
 ) ; end of library

@@ -8,6 +8,7 @@
 .-@0⊜∘≠@\n.
 
 # Shifts a row of a given value onto a matrix, dropping the last row.
+# TODO: use "fill ⬚ now works with rotate ↻ to give non-wrapping behavior"
 s ← ⍜⊢∵⋅∘↻¯1∶
 
 # Applies a function under all four rotations of a matrix.

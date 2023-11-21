@@ -5,7 +5,7 @@
 .&fras "../../input/2022_06.in"
 
 # Finds the start of the packet given a window size.
-m ← +⊗,≡'⧻⊝◫,∶
+m ← +⊗,≡(⧻⊝)◫,:
 
 # Part 1
 &p m4

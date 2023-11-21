@@ -8,10 +8,10 @@
 ↘1⊜((-2/↥=@.|/+⊜parse×≥@0,≤@9.)=@l⊏1.)≠@$.
 
 # Table of parent_size for each directory. Assumes we never repeat a descent.
-;∧~⋄⋄((-1⧻.⊂∶⊂∶0;|⊢⊏⊙.;|⊃∘(⍜⊡;⊂∶1)⊙∶∶)+2↧0.)⊙'0[∞_0]
+;∧((-1⧻.⊂:⊂:0;|⊢⊏⊙.;|⊃∘(⍜⊡;⊂:1)⊙::)+2↧0.)⊙(0[∞_0])
 
 # List of recursive directory sizes, starting with "/".
-.∧~~⋄(⍜⊏+⊙⊃⋅∘⊏)∩(⇌↘1)∶⇡⧻.∶/∘⍉
+.∧(⍜⊏+⊙⊃⋅∘⊏)∩(⇌↘1):⇡⧻.:/∘⍉
 
 # Part 1
 &p /+×≤1e5.

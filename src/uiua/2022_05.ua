@@ -4,11 +4,11 @@
 
 &fras "../../input/2022_05.in"
 
-# Initial state (top-down crate strings) and steps (table of n_src_dst).
-,,⊃(≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)(∺-0_1_1↯¯1_3⊜parse×≥@0,≤@9.↘⊗@m.↘)-1⊗@1.
+# Steps (table of n_src_dst) and initial state (top-down crate strings).
+,,⊃(≡-¤0_1_1↯¯1_3⊜parse×≥@0,≤@9.↘⊗@m.↘)(≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.↙)-1⊗@1.
 
 # Simulates all steps, applying the given function to moved crates.
-s! ← ∵⊢∧⋄~(⍜⊏{⊙(⊂^1)⊃↘↙⊙(∩⊔⊃⊢(⊡1))∶}⊃⋅(↘1)⊙⊢)
+s! ← ∵⊢∧(⍜⊏{⊙(⊂^1)⊃↘↙⊙(∩⊔⊃⊢(⊡1)):}⊃(↘1)(:⊢))
 
 # Part 1
 &p s!⇌

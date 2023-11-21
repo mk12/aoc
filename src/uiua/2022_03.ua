@@ -8,7 +8,7 @@
 .⊜□≠@\n.
 
 # Calculates the sum of priorities of characters.
-p ← /+-⊏∶-1_27"aA"<@a.
+p ← /+-⊏:-1_27"aA"<@a.
 
 # Part 1
 &p p∵(/(⊢▽∊,)↯2_¯1⊔)

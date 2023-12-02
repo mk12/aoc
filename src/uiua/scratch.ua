@@ -103,4 +103,12 @@
 
 # ▽ . [0 1 2 0 0]
 
-⊜□≠@,."one,two,three,four,five,six,seven,eight,nine"
+# ⊜□≠@,."one,two,three,four,five,six,seven,eight,nine"
+
+# # 2023_02
+# "7 blue, 3 green, 2 red"
+# ⬚0⊏⊃(⊗"rgb"▽×⊃(≥@a)(↻¯1=@ ))(⊜parse×≥@0,≤@9.).
+
+# ⊜(□⊜(⬚0⊏⊃(⊗"rgb"▽×⊃(≥@a)(↻¯1=@ ))(⊜parse×≥@0,≤@9.).)≠@;.↘+2⊗@:.)≠@\n.
+
+# /++1⊚≡(/×/×≡≤¤+12⇡3)

@@ -6,7 +6,7 @@
 
 w ← {"one" "two" "three" "four" "five" "six" "seven" "eight" "nine"}
 
-# Arrays for digits and for words. Each has 1-9 where they begin, 0 otherwise.
+# Arrays for digits and words. Each has 1-9 where they begin, 0 otherwise.
 ⊃(×≤9.↥0-@0)(/+×+1⇡9⊐⊠⌕w)⬚@.⊜∘≠@\n.
 
 # Returns the sum of calibration values given the numbers in each line.

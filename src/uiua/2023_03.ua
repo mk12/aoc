@@ -1,0 +1,17 @@
+# Copyright 2023 Mitchell Kember. Subject to the MIT License.
+# Advent of Code 2023
+# Day 3: Gear Ratios
+
+&fras "../../input/2023_03.in"
+
+# 
+⊜∘≠@\n.
+×¬,≠@.,×⊃(≥@0)(≤@9).
+/↥≡↻/⊂-1⇡3_3¤
+∩♭
+
+# Part 1
+# &p
+
+# Part 2
+# &p

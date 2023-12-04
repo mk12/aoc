@@ -7,58 +7,18 @@
 # Digit mask and character grid, including newlines.
 ,,×≥@0,≤@9.↯⊂.+1⊗@\n.
 
-# Expands a mask to include adjacent cells.
-a ← /↥≡⬚0↻/⊂-1⇡3_3¤
+# Translates a grid in all 8 compass directions.
+t ← ≡⬚0↻▽≡/↥≠0./⊂-1⇡3_3¤
 
 # Part 1
-
-# &p /+×⊙⊜parse⊜/↥,⊃♭⋅∩♭a∊:"#$%&*+-/=@",
-&p /+×⊙⊜parse⊜/↥,⊃♭⋅∩♭a¬↥,∊:".\n",
-
-# IDEA:
-# shared data structure is matrix with 0, -1 (hash), -2 (other symbol),
-# 1 (first part), 2 (second part), ... plus array of part numbers
+&p /+×⊙⊜parse⊜/↥,⊃♭⋅∩♭/↥t¬↥,∊:".\n",
 
 # Part 2
-⊃⊃⍜♭(×:\+×¬↻¯1..)(⊜parse∩♭)⋅(=@*)
-⍉≡♭≡⬚0↻/⊂-1⇡3_3¤
+⊃⊃⍜♭(×:\+×¬↻¯1..)⋅(=@*)(⊜parse∩♭) # ID grid, seq #s, * mask
+⍉≡♭t                              # 121x9: each row has the 9 rotations. then seq #s, * mask
 x ←
 x
-≡(⧻⊝)
-×⊙♭⊙:=3
-≡(-1▽±.⊝)▽:x
-/+≡/×⊏
-# ⊙(⊂0)
-# /+ confirmed it finds 2 gears
-# TODO: use that to retrieve the 2 indices, select, multiply
-
-# =2/+±
-
-# ⊜(/(+×10)-@0)∩♭
-# ⁿ:2⇡/+×¬↻1.♭
-
-# ⍜▽(×)⊃.(⇡⧻▽.)♭
-# =@*,
-
-# ##############
-# ×≥@0,≤@9.
-# ⊃♭(-@0:∩♭/↥≡↻/⊂-1⇡3_3¤¬↥∊:".\n",)
-
-# ≡⊜□¤
-# ⊜(×↥1⍘⊟/(+×10))
-
-# ¬↥,∊:".\n",×≥@0,≤@9.
-# /↥≡↻/⊂-1⇡3_3¤
-# ⊃♭⋅∩♭
-
-# ⊃♭⋅∩♭¬↥,∊:".\n",×≥@0,≤@9.
-# ⊃⊃♭(♭×)⋅⋅♭×⊃(≥@0)(≤@9),¬∊:".\n".
-# /×≡≠".\n"¤
-# ×⊃(≠@.)(≠@\n)
-# ×⊃(≥@0)(≤@9).
-
-# ×¬,⊃⊃(×≠@.:≠@\n.)(×≥@0:≤@9.)♭
-# /↥≡↻/⊂-1⇡3_3¤
-# ×¬,≠@.,×⊃(≥@0)(≤@9).
-# /↥≡↻/⊂-1⇡3_3¤
-# ∩♭
+=3≡(⧻⊝)      # len 121 mask of cells adj to exact 2
+×⊙♭          # mul by flat * mask
+≡(-1▽±.⊝)▽:x # select rows of rotation grid
+/+≡/×⊏       # select indices of seq #s, mult, add

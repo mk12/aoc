@@ -5,7 +5,7 @@
 &fras "../../input/2023_02.in"
 
 # Parses R_G_B from text like "7 green, 1 red, 2 blue", any order allowed.
-p ← ⊏⊃(⊗"rgb"▽×⊃(≥@a)(↻¯1=@ ))(⊜parse×≥@0,≤@9.).
+p ← ⊏⊃(⊗"rgb"▽×⊃(≥@a|↻¯1=@ )|⊜parse×≥@0,≤@9.).
 
 # Array with shape M_3_N (sets, RGB, games).
 .⍉⬚0⊜(⊜p≠@;.↘+2⊗@:.)≠@\n.

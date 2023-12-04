@@ -11,10 +11,10 @@ Steps ← ≡-¤0_1_1↯¯1_3⊜parse×≥@0,≤@9.↘⊗@m.
 State ← ≡(□▽≥@A.)▽=1◿4⇡⧻.⍉⊜∘≠@\n.
 
 # Steps and initial state.
-,,⊃(Steps↘)(State↙)-1⊗@1.
+,,⊃(Steps↘|State↙)-1⊗@1.
 
 # Simulates all steps, applying the given function to moved crates.
-s! ← ∵⊢∧(⍜⊏{⊙(⊂^1)⊃↘↙⊙(∩⊔⊃⊢(⊡1)):}⊃(↘1)(:⊢))
+s! ← ∵⊢∧(⍜⊏{⊙(⊂^1)⊃↘↙⊙(∩⊔⊃⊢(⊡1)):}⊃(↘1|:⊢))
 
 # Part 1
 &p s!⇌

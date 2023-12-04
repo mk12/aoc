@@ -14,10 +14,5 @@ t ← ≡⬚0↻▽≡/↥≠0./⊂-1⇡3_3¤
 &p /+×⊓⊜/↥⊜parse∩∩♭,/↥t¬↥,∊:".\n",
 
 # Part 2
-⊃⊃⍜♭(×:\+×¬↻¯1..)⋅(=@*)(⊜parse∩♭) # ID grid, * mask, seq #s
-⍉≡♭t                              # 121x9: each row has the 9 rotations. then seq #s, * mask
-,:
-?=3≡(⧻⊝)   # len 121 mask of cells adj to exact 2
-×⊙♭        # mul by flat * mask
-≡(-1▽±.⊝)▽ # select rows of rotation grid
-/+≡/×⊏     # select indices of seq #s, mult, add
+⊃(⍉≡♭t⍜♭(×:\+×¬↻¯1..)|♭=@*;|⊜parse∩♭)
+/+≡/×⊏≡(-1▽±.⊝)▽×=3≡(⧻⊝),:

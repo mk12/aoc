@@ -177,8 +177,25 @@
 # there are 10 seed ranges & 7 maps with >10 entries each,
 # so without merge it would result in > 10*10^7 ranges
 
-[¯48_2 50_52 52_100] [79 14 78 14]
-⊓↥↧⊙:⊃(∩⊏1,2|⍘⊟⊞+⊢)⊙(\+⍉↯¯1_2) # mapfunc_hilo_seed (N_2_S where N = num transformations, S = num seeds)
+# [¯48_2 50_52 52_100] [79 14 78 14 77 14]
+# T_2_S -> ≡⍉⍉ -> 2_T_S (T = number transformations in map, S = num seed ranges)
+# ∩♭⊓↥↧⊙:⊃(∩⊏1,2|⍘⊟≡⍉⍉⊞+⊢)⊙(\+⍉↯¯1_2) # final clamped (some have low≥hi, those are empty)
+
+# [5,15) apply [10,20) => [20,30)  (+10)
+# [15,25) -> clip -> [20,25)
+# find ranges that lie in NONE of the domains -> add to list unchanged
+# THEN sort and merge
+# hmm maybe for first part should clip THEN transform
+# clip -> bad, good. transform only good. include both
+# no! not both, only include old range portions that are in NONE of the transformations
+# ok take original reverse clipped (meaning potentially split in two)
+# and intersect all those
+# [¯48_2 50_52 52_100] [79 14 78 14 77 14]
+# ⊙(\+⍉↯¯1_2)
+
+# Trying to change from dest min/max to source min/max
+[50_52 98_50 2_48]
+⍜⍘[⊙⊙∘]⊃(⋅∘|+;|-:)
 
 # # Converting the input mappings into [delta min max].
 # dst_src_len

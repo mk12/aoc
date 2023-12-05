@@ -8,12 +8,17 @@
 p ← ⊜parse×≥@0,≤@9.
 
 # Mappings (boxed arrays with rows delta_min_max) and initial seeds numbers.
-⊜(□⍜⍘[⊙⊙∘]⊃(-:|∘|+⊙;)⍉↯¯1_3p)≠@:.↘20⊙p⊃↘↙⊗@\n.
+,,⊜(□⍜⍘[⊙⊙∘]⊃(-:|∘|+⊙;)⍉↯¯1_3p)≠@:.↘20⊙p⊃↘↙⊗@\n.
 
 # Part 1
+# TODO: once part 2 is done, consider if worth keeping this, or
+# should just express it as a series of size 1 ranges. Probably keep?
 &p /↧∧(
   ×⊓≥<⊙,⊃(∩⊏1,2|.⊞+⊢|⋅∘)⊔
   ≡⊏⊃(¬/↥|≡⊟/+×)
 )
 
 # Part 2
+⊙(\+⍉↯¯1_2) # change list of seed numbers to ranges
+⊔⊢          # just take first mapping for now
+# ∩♭⊓↥↧⊙:⊃(∩⊏1,2|⍘⊟≡⍉⍉⊞+⊢) # compute new ranges (los his)

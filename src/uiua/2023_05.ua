@@ -7,13 +7,12 @@
 # Parses all numbers found in a string.
 p ← ⊜parse×≥@0,≤@9.
 
-# List of mappings (boxed arrays with rows dst_src_len) and initial seeds.
-⊃(↘1⊜(□⍉↯¯1_3p)≠@:.↘|p↙)⊗@\n.
+# Mappings (boxed arrays with rows delta_min_max) and initial seeds numbers.
+⊜(□⍜⍘[⊙⊙∘]⊃(-:|∘|+⊙;)⍉↯¯1_3p)≠@:.↘20⊙p⊃↘↙⊗@\n.
 
 # Part 1
-/↧∧(
-  ⊃(∘|⊞-⊏1|⋅∘)⊔
-  ×⊃(≥0;|<⊏2|+⊢)
+&p /↧∧(
+  ×⊓≥<⊙,⊃(∩⊏1,2|.⊞+⊢|⋅∘)⊔
   ≡⊏⊃(¬/↥|≡⊟/+×)
 )
 

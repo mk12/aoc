@@ -147,3 +147,48 @@
 
 # ⍉[50_98_2 52_50_48] [79 14 79]
 # ≡⊏⊃(¬/↥|≡⊟/+×)×⊃(≥0;|≤⊏2|+⊢)⊃(∘|⊞-⊏1|⋅∘)
+
+# dst_src_len
+# ⍉[50_98_2 52_50_48] [79 79] [14 14]
+# before: delta=v-79, check ≥0 && < 2, add to 50
+
+# #### SINGLE VALUE TRANSFORMATION
+# 79 orig
+# 98{+2} src
+# 50{+2} dst  => -48, clip to ≥50 <52
+# 79-48=31, out of range
+# 79+2=81, clip to ≥52 <100, good. ---> 81
+
+# #### RANGE TRANSFORMATION
+# 79{+14} orig
+# 98{+2} src
+# 50{+2} dst  => -48, clip to ≥50 <52
+#       [79,93)
+# -48 = [31,45)
+# intersect [50,52) = {}
+#       [79,93)
+#  +2 = [81,95)
+# intersect [52,100) = [81, 95)
+
+# at each step:
+# - take all ranges
+# - transform all by all maps (table)
+# - flatten, sort, merge (incl. eliminate empty)
+# there are 10 seed ranges & 7 maps with >10 entries each,
+# so without merge it would result in > 10*10^7 ranges
+
+[¯48_2 50_52 52_100] [79 14 78 14]
+⊓↥↧⊙:⊃(∩⊏1,2|⍘⊟⊞+⊢)⊙(\+⍉↯¯1_2) # mapfunc_hilo_seed (N_2_S where N = num transformations, S = num seeds)
+
+# # Converting the input mappings into [delta min max].
+# dst_src_len
+# ⍉[50_98_2 52_50_48] [79 79] [14 14]
+# [⊃(-∩⊏1,0|⊢|+∩⊏0,2)]
+# [⊙⊃∘+-⊙.:⍘[⊙⊙∘]]
+# ⍜⍘[⊙⊙∘](⊙⊃∘+-⊙.:)
+# [⊃(-:|∘|+⊙;)⍘[⊙⊙∘]]
+# ⍜⍘[⊙⊙∘]⊃(-:|∘|+⊙;) # best one :-)
+# a b c
+# b a c
+# b a a c
+# (-b a) a (+a c)

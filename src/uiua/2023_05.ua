@@ -19,9 +19,8 @@ p ← ⊜parse×≥@0,≤@9.
 ⊙(\+⍉↯¯1_2) # interpet list of seed numbers as ranges
 ⊔⊢          # just take first mapping for now
 
+⍉⊂⊃(≡⊟∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2)|/⊂/⊂≡⊞⊟:↙2)
 # ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
 
 # Find ranges *outside* domain
-/⊂/⊂≡/⊞⊟⊠⊏⇡2⊟:↙2 # N.B. ↙2 unneeded if delta_min_max
-# /⊂⊂∩⊞⊟⊃∩⊢∩(⊏1): # works, but going to try to do more on array instead of stack
-# /⊂⊞⊟∩⊢:
+# ⍘⊟⍉/⊂/⊂≡⊞⊟:↙2

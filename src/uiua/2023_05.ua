@@ -22,6 +22,6 @@ p ← ⊜parse×≥@0,≤@9.
 # ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
 
 # Find ranges *outside* domain
-/⊂⊂∩⊞⊟⊃∩⊢∩(⊏1): # works, but going to try to do more on array instead of stack
-# ↙2 # N.B. unneeded if delta_min_max
+/⊂/⊂≡/⊞⊟⊠⊏⇡2⊟:↙2 # N.B. ↙2 unneeded if delta_min_max
+# /⊂⊂∩⊞⊟⊃∩⊢∩(⊏1): # works, but going to try to do more on array instead of stack
 # /⊂⊞⊟∩⊢:

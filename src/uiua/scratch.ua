@@ -194,8 +194,13 @@
 # ⊙(\+⍉↯¯1_2)
 
 # Trying to change from dest min/max to source min/max
-[50_52 98_50 2_48]
-⍜⍘[⊙⊙∘]⊃(⋅∘|+;|-:)
+[50_52 98_50 2_48] [79 100]
+⍜⍘[⊙⊙∘]⊃(-:|⋅∘|+;)
+×⊓⊞≥⊞<⊃(⊙,∩⊏1,2|⊞+⊢|⋅∘)
+≡⊏⊃(¬/↥|≡⊟/+×)
+# ×⊓≥<⊙,⊃(∩⊏1,2|.⊞+⊢|⋅∘)
+# actually maybe dest min/max was better b/c only need to do ⊞ once?
+# but src will be better for getting outside regions
 
 # # Converting the input mappings into [delta min max].
 # dst_src_len

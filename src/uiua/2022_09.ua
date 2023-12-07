@@ -4,7 +4,7 @@
 
 &fras "../../input/2022_09.in"
 
-⊜(×⊏∶1_¯1_0⊗∶"RL"_"UD"⊃⊢(parse↘2))≠@\n.
+⊜(×⊏:1_¯1_0⊗:"RL"_"UD"⊃⊢(⋕↘2))≠@\n.
 
 # Updates tail tx_ty to follow head hx_hy.
 # F ← +⊃∘(×/↥≥2⊃⌵±-)

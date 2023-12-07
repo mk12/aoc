@@ -5,7 +5,7 @@
 &fras "../../input/2022_07.in"
 
 # Commands as ¯2 (cd dir), ¯1 (cd ..), or size (ls). Skips the "cd /".
-↘1⊜((-2/↥=@.|/+⊜parse×≥@0,≤@9.)=@l⊏1.)≠@$.
+↘1⊜((-2/↥=@.|/+⊜⋕×≥@0,≤@9.)=@l⊏1.)≠@$.
 
 # Given a command, updates the cwd and [parent_size] state below.
 f ← (-1⧻.⊂:⊂:0;|⊢⊏⊙.;|⊃∘(⍜⊡;⊂:1)⊙::)+2↧0.
@@ -14,7 +14,7 @@ f ← (-1⧻.⊂:⊂:0;|⊢⊏⊙.;|⊃∘(⍜⊡;⊂:1)⊙::)+2↧0.
 ;∧f⊙(0[∞_0])
 
 # List of recursive directory sizes, starting with "/".
-.∧(⍜⊏+⊙⊃⋅∘⊏)∩(⇌↘1):⇡⧻.:/∘⍉
+.∧(⍜⊏+⊙⊃⋅∘⊏)∩(⇌↘1):⇡⧻.°⊟⍉
 
 # Part 1
 &p /+×≤1e5.

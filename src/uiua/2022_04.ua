@@ -5,7 +5,7 @@
 &fras "../../input/2022_04.in"
 
 # Section assignments with shape 2_2_N (elf, endpoint, line).
-.⍉↯¯1_2_2⊜parse≥@0.
+.⍉↯¯1_2_2⊜⋕≥@0.
 
 # Part 1
 &p /+≤0/×/-

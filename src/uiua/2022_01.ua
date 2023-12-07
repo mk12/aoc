@@ -5,7 +5,7 @@
 &fras "../../input/2022_01.in"
 
 # Calory sums in descending order.
-.⊏⍖.⊜(/+⊜parse≠@\n.)↥↻1.≠@\n.
+.⊏⍖.⊜(/+⊜⋕≠@\n.)↥↻1.≠@\n.
 
 # Part 1
 &p ⊢

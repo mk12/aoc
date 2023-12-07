@@ -14,29 +14,17 @@ p ← ⊜⋕×≥@0,≤@9.
 ,,⊜(□≡⊏¤⍏⊢.⍜°[⊙⊙∘]⊃(⋅∘|+;|-:)⍉↯¯1_3p)≠@:.↘20
 
 # Part 1
-# TODO: once part 2 is done, consider if worth keeping this, or
-# should just express it as a series of size 1 ranges. Probably keep?
 &p /↧∧(
-  ×⊃(⊞≥⊢|⊞<⊏1|⊞+⊏2|⋅∘)°□
-  ≡⊏⊃(¬/↥|≡⊟/+×)
+  ≡⊏⊃(¬/↥|≡⊟/+×)×⊃(⊞≥⊢|⊞<⊏1|⊞+⊏2|⋅∘)°□
 )
 
 # Part 2
-⊙(\+⍉↯¯1_2) # interpet list of seed numbers as ranges
-# ⊔⊢          # just take first mapping for now
-
-∧(
+⊙(\+⍉↯¯1_2)
+&p /↧⊢∧(
   °□
-  #   ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
   ⊃(
     ∩♭∩+⊙,∩⍉⊓⊞↥⊞↧⊙⊙::⊙:∩°⊟↙2⊙(:⊏2). # in domain
   | ∩♭⊓⊞↥⊞↧⊙:⊂¯∞:⊂:∞∩°⊟↙2           # out of domain
   )
-  ⊟∩⊂⊙:  # combine
-  ≡▽¤/>. # filter out empty
-  # only gets up to 88, so combining ranges is likely unnecessary
-  # yeah definitely, solution takes only 10ms
+  ≡▽¤/>.⊟∩⊂⊙:
 )
-/↧⊢
-
-# TODO consider if it would acutally be better to do 2 columns many rows

@@ -23,13 +23,16 @@ p ← ⊜parse×≥@0,≤@9.
 
 # Part 2
 ⊙(\+⍉↯¯1_2) # interpet list of seed numbers as ranges
-⊔⊢          # just take first mapping for now
-# no can't just combine all together,
-# for out-of-domain ones need to take intersection.
-# also usure if the OOD thing is even right.
-# ▽≡/>.⊂⊃(≡⊟∩♭⊓↥↧⊙:⊃(⊢|⊏1|⍘⊟≡⍉⍉⊞+⊏2)|/⊂/⊂≡⊞⊟:↙2)
+# ⊔⊢          # just take first mapping for now
 
-# ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
-
-# Find ranges *outside* domain
-⊙:⊂¯∞:⊂:∞∩⍘⊟↙2
+∧(
+  ?
+  ⊔
+  # ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
+  ⊃(
+    ∩♭∩+⊙,∩⍉⊓⊞↥⊞↧⊙⊙::⊙:∩⍘⊟↙2⊙(:⊏2). # in domain
+  | ∩♭⊓⊞↥⊞↧⊙:⊂¯∞:⊂:∞∩⍘⊟↙2           # out of domain
+  )
+  ⊟∩⊂⊙⊙:⊙:        # combine
+  ⍜⍉⊝≡⊏¤⍏⊢.≡▽¤/>. # filter out empty, and sort, dedup (under tranpose - maybe columns are better??)
+)

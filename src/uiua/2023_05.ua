@@ -26,13 +26,17 @@ p ← ⊜parse×≥@0,≤@9.
 # ⊔⊢          # just take first mapping for now
 
 ∧(
-  ?
   ⊔
-  # ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
+  #   ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
   ⊃(
     ∩♭∩+⊙,∩⍉⊓⊞↥⊞↧⊙⊙::⊙:∩⍘⊟↙2⊙(:⊏2). # in domain
   | ∩♭⊓⊞↥⊞↧⊙:⊂¯∞:⊂:∞∩⍘⊟↙2           # out of domain
   )
-  ⊟∩⊂⊙⊙:⊙:        # combine
-  ⍜⍉⊝≡⊏¤⍏⊢.≡▽¤/>. # filter out empty, and sort, dedup (under tranpose - maybe columns are better??)
+  ⊟∩⊂⊙:        # combine
+  ≡⊏¤⍏⊢.≡▽¤/>. # filter out empty, and sort
+  # only gets up to 88, so combining ranges is likely unnecessary
+  # yeah definitely, solution takes only 10ms
 )
+⊢⊢
+
+# TODO consider if it would acutally be better to do 2 columns many rows

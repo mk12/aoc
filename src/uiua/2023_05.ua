@@ -7,13 +7,19 @@
 # Parses all numbers found in a string.
 p ← ⊜parse×≥@0,≤@9.
 
-# Mappings (boxed arrays with rows min_max_delta) and initial seeds numbers.
-,,⊜(□⍜⍘[⊙⊙∘]⊃(⋅∘|+;|-:)⍉↯¯1_3p)≠@:.↘20⊙p⊃↘↙⊗@\n.
+# Initial seeds numbers.
+⊙p⊃↘↙⊗@\n.
+
+# Mappings as boxed arrays with rows min_max_delta, sorted by min.
+,,⊜(□≡⊏¤⍏⊢.⍜⍘[⊙⊙∘]⊃(⋅∘|+;|-:)⍉↯¯1_3p)≠@:.↘20
 
 # Part 1
 # TODO: once part 2 is done, consider if worth keeping this, or
 # should just express it as a series of size 1 ranges. Probably keep?
-&p /↧∧(≡⊏⊃(¬/↥|≡⊟/+×)×⊃(⊞≥⊢|⊞<⊏1|⊞+⊏2|⋅∘)⊔)
+&p /↧∧(
+  ×⊃(⊞≥⊢|⊞<⊏1|⊞+⊏2|⋅∘)⊔
+  ≡⊏⊃(¬/↥|≡⊟/+×)
+)
 
 # Part 2
 ⊙(\+⍉↯¯1_2) # interpet list of seed numbers as ranges
@@ -22,8 +28,8 @@ p ← ⊜parse×≥@0,≤@9.
 # for out-of-domain ones need to take intersection.
 # also usure if the OOD thing is even right.
 # ▽≡/>.⊂⊃(≡⊟∩♭⊓↥↧⊙:⊃(⊢|⊏1|⍘⊟≡⍉⍉⊞+⊏2)|/⊂/⊂≡⊞⊟:↙2)
-↙2
+
 # ∩♭⊓↥↧⊙:⊃(∩⊏0,1|⍘⊟≡⍉⍉⊞+⊏2) # compute new ranges (list of los, list of his)
 
 # Find ranges *outside* domain
-# ⍘⊟⍉/⊂/⊂≡⊞⊟:↙2
+⊙:⊂¯∞:⊂:∞∩⍘⊟↙2

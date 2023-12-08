@@ -5,18 +5,22 @@
 &fras "../../input/2023_07.in"
 
 # Hands (0-12 representing A-2) and bids.
-⊜⊃(⊗:"AKQJT98765432"↙5|⋕↘6)≠@\n.
+,,⊜⊃(⊗:"AKQJT98765432"↙5|⋕↘6)≠@\n.
 
-# Hand types where -5 = five of a kind, -3 = four of a kind, -2 = full house,
-# -1 = three of a kind, 0 = two pair, 1 = one pair, and 3 = high card.
-≡(⊂-∩/↥⊕⧻..⊛.)
-/+×-⊃(⍏⍏)⧻
-# +1⍖
+# Scores a hand as -5 (five of a kind), -3, -2, -1, 0, 1, or 3 (high card).
+s ← -∩/↥⊕⧻..⊛
 
-# not 250216960
-# not 250834180
-# not 249286659
-# 248836197
+# Scores a hand with jokers as wildcards.
+j ← -×2⊃/+(s▽¬)=3.
+
+# Calculates total winnings from hands and bids given a scoring function.
+t! ← /+×-⊃(⍏⍏)⧻≡(⊂^1.)
+
+# Part 1
+&p t!s
+
+# Part 2
+;; # &p t!j
 
 #     num-1  hifreq
 #     /↥⊛    /↥⊕⧻.⊛  -
@@ -28,6 +32,32 @@
 # 1P  3      2       1
 # HC  4      1       3
 
-# Part 1
+# JJJJJ  0 - 5 = -5
+#       (0 - 5) - (5 + 5) = -15
+#
 
-# Part 2
+# N cards, M distinct, J jokers
+
+# Hand  J M M'  H H'
+# ==================
+# ABCDJ 1  5 4  1 2
+# AABCJ 1  4 3  2 3
+# AAABJ 1  3 2  3 4
+# AAAAJ 1  2 1  4 5
+# ------------------
+# ABCJJ 2  4 3  2 3
+# AABJJ 2  3 2  2 4 *    2: ≤3
+# AAAJJ 2  2 1  3 5 *
+# ------------------
+# ABJJJ 3  3 2  3 4
+# AAJJJ 3  2 1  3 5 *    3: ≤2
+# ------------------
+# AJJJJ 4  2 1  4 5 *?   4: ≤1
+# ------------------
+# JJJJJ 5  1 1  5 5 *?   5: ≤0
+
+# M' = max(0, M - (J>0))
+# H' = min(5, H + (J>0) + (J>1 & M≤J+1))
+
+⊗:"AKQJT98765432" ["AAAAA" "QQQQJ"]
+≡j

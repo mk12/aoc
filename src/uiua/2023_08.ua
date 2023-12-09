@@ -4,16 +4,16 @@
 
 &fras "../../input/2023_08.in"
 
-# TODO
-⊃(=@R↙)(≡/(+×26)⍉↯¯1_3_3-@A▽≥@A.↘)⊗@\n.
+# The number of elements in AAA to ZZZ.
+m ← ⁿ3 26
 
-ZZZ ← -1ⁿ3 26
+# Converts an array of i_x_y to x_y at indices i and zeros elsewhere.
+d ← ∧(⍜⊏;⊙:⊃⊢(↘1)):↯:0m_2
 
-# val idx RLRL M
-
-# val M 0/1 M
+# Instructions (0/1 for L/R) and network as a dense array with shape m_2.
+⊃(=@R↙)(d≡≡/(+×26)↯¯1_3_3-@A▽≥@A.↘)⊗@\n.
 
 # Part 1
-&p ⊙(;;;):⍢⊃(⊡⊂:⊙(+1)⊗⊙(⊢,⊏◿⧻,)|+1⋅⊙⊙∘)(≠ZZZ)0 0
+⊙(;;;)⍢⊃(+1⊙∘|⊡⊙.⊂:⊏◿⧻,)(≠-1m;;)0:0
 
 # Part 2

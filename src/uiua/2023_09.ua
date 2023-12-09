@@ -4,10 +4,20 @@
 
 &fras "../../input/2023_09.in"
 
+# Histories of values.
+↯⊃(⊂¯1+1/+=@ ↙⊗@\n.|⊜⋕≥@-.)
+
+# Coefficients to extrapolate a sequence that is arithmetic, quadratic, etc.
+/+[⍥(≡/-◫2⊂0.)]⊃(-1|=0⇡)⧻⊢.
+
 # TODO
-⊜(⊜⋕≠@ .)≠@\n.
+,,
+
+# Returns the sum of extrapolated values given coefficients and sequences.
+s ← /+≡(/+×)¤
 
 # Part 1
-≡⇌⇌[⍥(≡/-◫2⊂0.)]:=0⇡.⧻⊢
+&p s⇌
 
 # Part 2
+&p s

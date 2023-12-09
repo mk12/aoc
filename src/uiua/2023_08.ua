@@ -1,6 +1,6 @@
 # Copyright 2023 Mitchell Kember. Subject to the MIT License.
 # Advent of Code 2023
-# Day 8: Haunted Wasteland
+# Day 9: Mirage Maintenance
 
 &fras "../../input/2023_08.in"
 

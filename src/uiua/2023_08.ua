@@ -12,21 +12,18 @@ d ← ∧(⍜⊏;⊙:⊃⊢(↘1)):↯:0m_2
 
 # Elements (base 26), instructions (0/1 for L/R), and network (dense m_2 array).
 ⊃(⋅≡⊢|∘|⋅d)⊃(=@R↙)(≡≡/(+×26)↯¯1_3_3-@A▽≥@A.↘)⊗@\n.
-El ←
-Lr ←
-Nw ←
-
-# Calculates the number of steps to reach a node satisfying the given predicate,
-# starting from the given node.
-s! ← ⊙(;;;)⍢⊃(+1⊙∘|⊃⊡⋅∘⊂:⊏◿⧻,)(¬^1;;)0Lr⊙Nw
+# TODO ugly duplicating 3 args
+⊃⊙⊙∘⊙⊙∘
 
 # Calculates the least common multiple of two numbers.
 LCM ← ÷⊃(;⍢⊃◿∘(≠0))×
 
 # Part 1
-# &p s!(=-1m)0
+&p ⊙(;;;)⍢⊃(+1⊙∘|⊃⊡⋅∘⊂:⊏◿⧻,)(≠-1m;;)0:0;
 
 # Part 2
-/LCM∵s!(=25◿26)▽=0◿26.El
-# p ← +@A≡[;⍥⊃(⌊÷26|◿26)3]
-# &p ⊙(;;;)⍢⊃(+1⊙∘|⊃⊡⋅∘≡⊂:⊏◿⧻,⊙⊙(;⸮p.))(<10)0:▽=0◿26.
+f ← (
+  ⊃(+1⊙∘|⊃(▽¬)/↥=25◿26.⊃⊡⋅∘≡⊂:⊏◿⧻,)
+  ⊃(⊙⊙∘|(;|⊙LCM:):⊙(;;))
+)
+&p ;;;;⍢f(>0⧻;;)0:▽=0◿26.⊙⊙⊙1

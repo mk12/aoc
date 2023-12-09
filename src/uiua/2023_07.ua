@@ -16,7 +16,10 @@ s ← -∩/↥⊕⧻..⊛
 # H' = min(5, H + (J>0) + (J>1 & M≤5-J))
 
 # Scores a hand with jokers as wildcards.
-j ← -⊃(↧5++⊃(⋅⋅∘|±|×⊃(>1|<-:5))|↥0-±)⊃(/+=∞|∩/↥:⊕⧻..⊛)
+j ← (
+  ⊃(/+=∞|∩/↥:⊕⧻..⊛)
+  -⊃(↧5++⊃(⋅⋅∘|±|×⊃(>1|<-:5))|↥0-±)
+)
 
 # Calculates total winnings from hands and bids given a scoring function.
 t! ← /+×-⊃(⍏⍏)⧻≡(⊂^1.)

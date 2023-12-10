@@ -7,9 +7,6 @@
 ⍉≡⍉⊏:▽¬◿2≡/+.⋯⇡16⊗:".-JL7F|S"⊜∘≠@\n.
 
 # Part 1
-# ×⬚0↻1°⊟↙2 # 1 = I connect downward
-# ×⬚0↻¯1:°⊟↙2 # 1 = I connect upward
-# ×⬚0≡↻1°⊟↘2 # = 1 I connect rightward
-# ×⬚0≡↻¯1:°⊟↘2 # = 1 I connect leftward
+⌊÷2/+♭=2/+[⊓⊃(×↻1|×↻¯1:)⊃(×≡↻1|×≡↻¯1:)]°[⊙⊙⊙∘]
 
 # Part 2

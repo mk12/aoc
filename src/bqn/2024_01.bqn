@@ -2,7 +2,7 @@
 # Advent of Code 2024
 # Day 1: Historian Hysteria
 
-⟨Input, N, Cut⟩ ← •Import "common.bqn"
+⟨Cut, Input, N⟩ ← •Import "common.bqn"
 
 # Tranposed location IDs (2 rows instead of 2 columns).
 x ← ⍉∘‿2⥊N¨(<⟜'0')¨⊸Cut Input "2024_01"
@@ -12,4 +12,3 @@ x ← ⍉∘‿2⥊N¨(<⟜'0')¨⊸Cut Input "2024_01"
 
 # Part 2
 •Show +´(⊏×(⊐˜∘⊣⊏≠∘⊣↑/⁼∘⊐)˝)x
-
